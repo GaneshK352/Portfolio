@@ -35,7 +35,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s, opacity 0.5s ease;
         }
 
         body {
@@ -63,6 +63,12 @@
             cursor: pointer;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         /* Left Sidebar - Fixed */
@@ -82,6 +88,7 @@
             z-index: 100;
             justify-content: center;
             border-right: 1px solid rgba(0,0,0,0.1);
+            animation: slideInLeft 0.8s ease-out;
         }
 
         .profile-img {
@@ -92,6 +99,12 @@
             border: 5px solid var(--primary);
             margin-bottom: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
         .name {
@@ -99,6 +112,7 @@
             margin-bottom: 0.5rem;
             font-weight: 700;
             color: var(--lighter);
+            animation: fadeIn 1s ease-out 0.2s both;
         }
 
         .title {
@@ -106,6 +120,7 @@
             color: var(--primary);
             margin-bottom: 2rem;
             opacity: 0.9;
+            animation: fadeIn 1s ease-out 0.4s both;
         }
 
         .contact-links {
@@ -124,10 +139,15 @@
             font-size: 0.95rem;
             transition: all 0.3s;
             justify-content: center;
+            padding: 0.5rem;
+            border-radius: 5px;
+            animation: fadeIn 1s ease-out 0.6s both;
         }
 
         .contact-link:hover {
             color: var(--primary);
+            background-color: rgba(0, 0, 0, 0.05);
+            transform: translateX(5px);
         }
 
         .contact-icon {
@@ -147,6 +167,14 @@
             padding: 3rem 4rem;
             min-height: auto;
             border-bottom: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title {
@@ -165,6 +193,13 @@
             height: 4px;
             background-color: var(--primary);
             border-radius: 2px;
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.6s ease-out;
+        }
+
+        .section.visible .section-title::after {
+            transform: scaleX(1);
         }
 
         /* About Section */
@@ -183,6 +218,24 @@
             line-height: 1.7;
             font-size: 1.1rem;
             color: var(--text-secondary);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .about-text p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .about-text p:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .about-text p:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .about-text p:nth-child(3) {
+            transition-delay: 0.6s;
         }
 
         /* Education Section */
@@ -194,6 +247,24 @@
 
         .education-item {
             padding: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .education-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .education-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .education-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .education-item:nth-child(3) {
+            transition-delay: 0.6s;
         }
 
         .education-header {
@@ -243,6 +314,12 @@
             border-radius: 20px;
             font-size: 0.8rem;
             border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .course-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
 
         /* Skills Section */
@@ -254,6 +331,24 @@
 
         .skill-category {
             padding: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .skill-category {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .skill-category:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .skill-category:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .skill-category:nth-child(3) {
+            transition-delay: 0.6s;
         }
 
         .skill-category h3 {
@@ -276,6 +371,12 @@
             font-size: 0.9rem;
             font-weight: 500;
             border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
 
         /* Certifications Section */
@@ -287,6 +388,42 @@
 
         .cert-card {
             padding: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .cert-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .cert-card:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .cert-card:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+        .section.visible .cert-card:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .cert-card:nth-child(4) {
+            transition-delay: 0.5s;
+        }
+        .section.visible .cert-card:nth-child(5) {
+            transition-delay: 0.6s;
+        }
+
+        .cert-card {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .cert-title {
@@ -309,6 +446,39 @@
 
         .project-item {
             padding: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .project-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .project-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .project-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .project-item:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+        .section.visible .project-item:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+
+        .project-item {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .project-title {
@@ -332,6 +502,12 @@
             font-size: 0.8rem;
             font-weight: 500;
             border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
 
         .project-desc {
@@ -348,6 +524,33 @@
 
         .exp-item {
             padding: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .exp-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .exp-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .exp-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .exp-item {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .exp-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .exp-header {
@@ -390,6 +593,24 @@
             padding-left: 1.5rem;
             color: var(--text-secondary);
             line-height: 1.5;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+
+        .section.visible .exp-points li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .section.visible .exp-points li:nth-child(1) {
+            transition-delay: 0.3s;
+        }
+        .section.visible .exp-points li:nth-child(2) {
+            transition-delay: 0.5s;
+        }
+        .section.visible .exp-points li:nth-child(3) {
+            transition-delay: 0.7s;
         }
 
         .exp-points li::before {
@@ -408,6 +629,36 @@
 
         .achievement-item {
             padding: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .achievement-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .achievement-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .achievement-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .achievement-item:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+
+        .achievement-item {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .achievement-title {
@@ -428,14 +679,61 @@
             font-size: 1.1rem;
         }
 
+        .contact-text p {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .contact-text p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .contact-text p:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .contact-text p:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
         .contact-text a {
             color: var(--primary);
             text-decoration: none;
             transition: all 0.3s;
+            position: relative;
         }
 
-        .contact-text a:hover {
-            text-decoration: underline;
+        .contact-text a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .contact-text a:hover::after {
+            width: 100%;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         /* Responsive Design */
@@ -459,6 +757,7 @@
                 padding: 2rem 1rem;
                 border-right: none;
                 border-bottom: 1px solid rgba(0,0,0,0.1);
+                animation: fadeIn 1s ease-out;
             }
             .main-content {
                 margin-left: 0;
@@ -513,7 +812,7 @@
 
     <!-- Left Sidebar - Fixed -->
     <div class="sidebar">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Ganesh Kuntamalla" class="profile-img">
+       <img src="headshot.jpg" alt="Ganesh Kuntamalla" class="profile-img">
         <h2 class="name">Ganesh Kuntamalla</h2>
         <p class="title">Electrical & Computer Engineer</p>
         
@@ -524,7 +823,7 @@
             </a>
             <a href="mailto:kuntamallaganesh@gmail.com" class="contact-link">
                 <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span>gkuntamalla@albany.edu</span>
+                <span>kuntamallaganesh@gmail.com</span>
             </a>
             <a href="https://linkedin.com/in/ganesh-kuntamalla352" target="_blank" class="contact-link">
                 <span class="contact-icon"><i class="fab fa-linkedin-in"></i></span>
@@ -785,7 +1084,7 @@
         <section class="section" id="contact">
             <h2 class="section-title">Let's Connect</h2>
             <div class="contact-text">
-                <p>I am actively seeking full-time opportunities in RTL design and VLSI, as well as roles in power systems and renewable energy. If you have any relevant openings or would like to discuss potential collaborations, please reach out via <a href="https://linkedin.com/in/ganesh-kuntamalla352" target="_blank">LinkedIn</a> or email <a href="mailto:gkuntamalla@albany.edu">agujju@albany.edu</a>.</p>
+                <p>I am actively seeking full-time opportunities in RTL design and VLSI, as well as roles in power systems and renewable energy. If you have any relevant openings or would like to discuss potential collaborations, please reach out via <a href="https://linkedin.com/in/ganesh-kuntamalla352" target="_blank">LinkedIn</a> or email <a href="mailto:agujju@albany.edu">agujju@albany.edu</a>.</p>
                 <p>I am open to discussing full-time roles, research collaborations, and networking opportunities in the fields of Electrical and Computer Engineering.</p>
             </div>
         </section>
@@ -816,6 +1115,32 @@
                 icon.classList.replace('fa-sun', 'fa-moon');
                 localStorage.setItem('theme', 'light');
             }
+        });
+
+        // Scroll Animation Functionality
+        const sections = document.querySelectorAll('.section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    // Uncomment below if you want elements to fade out when scrolling up
+                    // entry.target.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Animate elements on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // The sidebar has its own animation
+            // The sections will animate as they come into view via the IntersectionObserver
         });
     </script>
 </body>
