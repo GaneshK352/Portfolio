@@ -18,11 +18,24 @@
             --text-secondary: #666666;
         }
 
+        .dark-mode {
+            --primary: #4a9ff5;
+            --secondary: #8a8a8a;
+            --dark: #121212;
+            --darker: #1e1e1e;
+            --light: #f5f5f5;
+            --lighter: #ffffff;
+            --accent: #4a9ff5;
+            --text: #e0e0e0;
+            --text-secondary: #b0b0b0;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         body {
@@ -31,6 +44,25 @@
             overflow-x: hidden;
             display: flex;
             line-height: 1.6;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         /* Left Sidebar - Fixed */
@@ -114,10 +146,6 @@
         .section {
             padding: 3rem 4rem;
             min-height: auto;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .section:last-child {
             border-bottom: none;
         }
 
@@ -438,6 +466,10 @@
             .section {
                 padding: 2rem 1.5rem;
             }
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -474,6 +506,11 @@
     </style>
 </head>
 <body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Left Sidebar - Fixed -->
     <div class="sidebar">
         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Ganesh Kuntamalla" class="profile-img">
@@ -487,7 +524,7 @@
             </a>
             <a href="mailto:kuntamallaganesh@gmail.com" class="contact-link">
                 <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span>kuntamallaganesh@gmail.com</span>
+                <span>gkuntamalla@albany.edu</span>
             </a>
             <a href="https://linkedin.com/in/ganesh-kuntamalla352" target="_blank" class="contact-link">
                 <span class="contact-icon"><i class="fab fa-linkedin-in"></i></span>
@@ -748,10 +785,38 @@
         <section class="section" id="contact">
             <h2 class="section-title">Let's Connect</h2>
             <div class="contact-text">
-                <p>I am actively seeking full-time opportunities in RTL design and VLSI, as well as roles in power systems and renewable energy. If you have any relevant openings or would like to discuss potential collaborations, please reach out via <a href="https://linkedin.com/in/ganesh-kuntamalla352" target="_blank">LinkedIn</a> or email <a href="mailto:agujju@albany.edu">agujju@albany.edu</a>.</p>
+                <p>I am actively seeking full-time opportunities in RTL design and VLSI, as well as roles in power systems and renewable energy. If you have any relevant openings or would like to discuss potential collaborations, please reach out via <a href="https://linkedin.com/in/ganesh-kuntamalla352" target="_blank">LinkedIn</a> or email <a href="mailto:gkuntamalla@albany.edu">agujju@albany.edu</a>.</p>
                 <p>I am open to discussing full-time roles, research collaborations, and networking opportunities in the fields of Electrical and Computer Engineering.</p>
             </div>
         </section>
     </div>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            body.classList.add('dark-mode');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>
