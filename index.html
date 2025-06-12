@@ -980,14 +980,19 @@
                             <li>An inverter with overload protection powers the AC loads</li>
                             <li>A relay circuit manages the power flow between the boost converter, battery, and inverter</li>
                             <li>The one of the relay (say 1) disconnects the charger once the battery is fully charged to prevent overcharging</li>
-                            <li>Relay (say 2) Operation Modes:
-                              CASE 1:
-                             (Boost Converter → Charger & Battery → Relay → Inverter → Load)
-                              When power from solar and ventilator is available, the boost converter charges the battery and supplies the inverter
+                            <li>
+  <pre>
+Relay (say 2) Operation Modes:
+    CASE 1:
+    (Boost Converter → Charger & Battery → Relay → Inverter → Load)
+    When power from solar and ventilator is available, the boost converter charges the battery and supplies the inverter
 
-                             CASE 2:
-                             (Battery → Relay → Inverter → Load)
-                             When there is low or no generation, the battery alone supplies the inverter to power the load</li>
+    CASE 2:
+    (Battery → Relay → Inverter → Load)
+    When there is low or no generation, the battery alone supplies the inverter to power the load
+  </pre>
+</li>
+
                           <li>Supports sustainable energy usage for future generations.</li>
                            </ul>
                </div>
