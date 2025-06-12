@@ -969,28 +969,27 @@
                 <div class="project-item">
                     <h3 class="project-title">Hybrid Power Generation System</h3>
                       <ul class="exp-points">
-                            <li>Developed a hybrid power generation system combining a roof turbine ventilator and solar energy.</li>
-                            <li>Uses a boost converter, battery, inverter, and control electronics to generate and distribute electricity.</li>
-                            <li>Provides a solution for pollution reduction, energy needs in remote areas, and reduces reliance on non-renewable sources.</li>
-                            <li>Surplus power can be supplied to local households or the electric grid.</li>
-                            <li>The roof ventilator generates mechanical energy through airflow, which is converted into electricity using a dynamo and gears.</li>
-                            <li>A rectifier converts the AC output from the dynamo to DC.</li>
-                            <li>Solar panels are mounted on a dual-axis tracker to maximize sunlight exposure and efficiency.</li>
-                            <li>The boost converter raises voltage to a sufficient level to charge the battery through a battery charger.</li>
-                            <li>An inverter with overload protection powers the AC loads.</li>
-                            <li>A relay circuit manages the power flow between the boost converter, battery, and inverter.</li>
-                            <li>The one of the relay (say 1) disconnects the charger once the battery is fully charged to prevent overcharging.</li>
-                            <li>Supports sustainable energy usage for future generations.</li>
-                     </ul>
+                            <li>Developed a hybrid power generation system combining a roof turbine ventilator and solar energy</li>
+                            <li>Uses a boost converter, battery, inverter, and control electronics to generate and distribute electricity</li>
+                            <li>Provides a solution for pollution reduction, energy needs in remote areas, and reduces reliance on non-renewable sources</li>
+                            <li>Surplus power can be supplied to local households or the electric grid</li>
+                            <li>The roof ventilator generates mechanical energy through airflow, which is converted into electricity using a dynamo and gears</li>
+                            <li>A rectifier converts the AC output from the dynamo to DC</li>
+                            <li>Solar panels are mounted on a dual-axis tracker to maximize sunlight exposure and efficiency</li>
+                            <li>The boost converter raises voltage to a sufficient level to charge the battery through a battery charger</li>
+                            <li>An inverter with overload protection powers the AC loads</li>
+                            <li>A relay circuit manages the power flow between the boost converter, battery, and inverter</li>
+                            <li>The one of the relay (say 1) disconnects the charger once the battery is fully charged to prevent overcharging</li>
+                            <li>Relay (say 2) Operation Modes:
+                              CASE 1:
+                             (Boost Converter → Charger & Battery → Relay → Inverter → Load)
+                              When power from solar and ventilator is available, the boost converter charges the battery and supplies the inverter
 
-                            <p>Relay (say 2) Operation Modes:</p>
-                             <p>CASE 1:<br>
-                             (Boost Converter → Charger & Battery → Relay → Inverter → Load)<br>
-                              When power from solar and ventilator is available, the boost converter charges the battery and supplies the inverter.</p>
-
-                             <p>CASE 2:<br>
-                             (Battery → Relay → Inverter → Load)<br>
-                             When there is low or no generation, the battery alone supplies the inverter to power the load.</p>
+                             CASE 2:
+                             (Battery → Relay → Inverter → Load)
+                             When there is low or no generation, the battery alone supplies the inverter to power the load</li>
+                          <li>Supports sustainable energy usage for future generations.</li>
+                           </ul>
                </div>
 
                 <!-- Project 5 -->
@@ -1004,13 +1003,8 @@
                         <li>IR sensors detect obstacles and maintain safe distance between vehicles to avoid collisions</li>
                         <li>If the system is tampered with, the GSM module sends alerts (with vehicle number) to the nearest police station</li>
                         <li>Alcohol detection (MQ-3) stops the engine and sends an alert via SMS to police and family if the driver is intoxicated</li>
-                        <li>Vehicle ignition is allowed only if:
-                             <ul>
-                                 <li>No alcohol is detected</li>
-                                 <li>Seat belt (or helmet for two-wheelers) is used</li>
-                                 <li>Driver is not drowsy (drowsiness detection mechanism included)</li>
-                            <ul>
-                 </li>
+                        <li>Vehicle ignition is allowed only if:No alcohol is detected,Seat belt (or helmet for two-wheelers) is used,Driver is not drowsy (drowsiness detection mechanism included)</li>
+                  </ul>
                 </div>
             </div>
         </section>
