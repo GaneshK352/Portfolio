@@ -961,15 +961,37 @@
 
                 <!-- Project 3 -->
                 <div class="project-item">
-                    <h3 class="project-title">Hybrid Power Generation System</h3>
-                    <p class="project-desc">Developed a hybrid energy system combining roof turbine ventilators and solar panels for remote areas with integrated storage batteries and inverters.</p>
+                    <h3 class="project-title">4-bit Ripple Carry Adder (RCA)</h3>
+                    <p class="project-desc">Designed a 4-bit RCA using MAGIC, extracted the circuit-level netlist, and simulated its behavior using SPICE for VLSI applications.</p>
                 </div>
 
                 <!-- Project 4 -->
                 <div class="project-item">
-                    <h3 class="project-title">4-bit Ripple Carry Adder (RCA)</h3>
-                    <p class="project-desc">Designed a 4-bit RCA using MAGIC, extracted the circuit-level netlist, and simulated its behavior using SPICE for VLSI applications.</p>
-                </div>
+                    <h3 class="project-title">Hybrid Power Generation System</h3>
+                      <ul class="exp-points">
+                            <li>Developed a hybrid power generation system combining a roof turbine ventilator and solar energy.</li>
+                            <li>Uses a boost converter, battery, inverter, and control electronics to generate and distribute electricity.</li>
+                            <li>Provides a solution for pollution reduction, energy needs in remote areas, and reduces reliance on non-renewable sources.</li>
+                            <li>Surplus power can be supplied to local households or the electric grid.</li>
+                            <li>The roof ventilator generates mechanical energy through airflow, which is converted into electricity using a dynamo and gears.</li>
+                            <li>A rectifier converts the AC output from the dynamo to DC.</li>
+                            <li>Solar panels are mounted on a dual-axis tracker to maximize sunlight exposure and efficiency.</li>
+                            <li>The boost converter raises voltage to a sufficient level to charge the battery through a battery charger.</li>
+                            <li>An inverter with overload protection powers the AC loads.</li>
+                            <li>A relay circuit manages the power flow between the boost converter, battery, and inverter.</li>
+                            <li>The one of the relay (say 1) disconnects the charger once the battery is fully charged to prevent overcharging.</li>
+                            <li>Supports sustainable energy usage for future generations.</li>
+                     </ul>
+
+                            <p>Relay (say 2) Operation Modes:</p>
+                             <p>CASE 1:<br>
+                             (Boost Converter → Charger & Battery → Relay → Inverter → Load)<br>
+                              When power from solar and ventilator is available, the boost converter charges the battery and supplies the inverter.</p>
+
+                             <p>CASE 2:<br>
+                             (Battery → Relay → Inverter → Load)<br>
+                             When there is low or no generation, the battery alone supplies the inverter to power the load.</p>
+               </div>
 
                 <!-- Project 5 -->
                 <div class="project-item">
