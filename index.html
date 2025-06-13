@@ -947,22 +947,81 @@
         <section class="section" id="projects">
             <h2 class="section-title">Academic Projects</h2>
             <div class="projects-container">
-                <!-- Project 1 -->
+                <!-- Project -1 -->
                 <div class="project-item">
                     <h3 class="project-title">High Current High Voltage PCB Tester</h3>
                     <p class="project-desc">Designed and developed a PCB-based tester for evaluating MEMS-based power relays under real-world high-current (750A) and high-voltage (1000V) conditions.</p>
                 </div>
+                <!-- Project 0 -->
+                <div class="project-item">
+                    <h3 class="project-title">High Current High Voltage PCB Tester</h3>
+                    <p class="project-desc">Designed and developed a PCB-based tester for evaluating MEMS-based power relays under real-world high-current (750A) and high-voltage (1000V) conditions.</p>
+                </div>
+                <!-- Project 1 -->
+                <div class="project-item">
+                    <h3 class="project-title">Design and Implementation of a Pipelined Wallace Tree Multiplier in Verilog</h3>
+                    <ul class="exp-points">
+                     
+    <li>Designed and implemented a pipelined Wallace Tree Multiplier using Verilog for high-speed binary multiplication.</li>
+    <li>Used half adders and full adders to construct the partial product reduction stages in the multiplier.</li>
+    <li>Adopted pipelining to reduce the critical path delay and improve performance over traditional Wallace tree designs.</li>
+    <li>Addressed limitations of traditional Wallace tree multipliers such as increased area and power consumption.</li>
+    <li>Followed a bottom-up design methodology, building the system from leaf cells (HA and FA) to a complete 8×8 multiplier.</li>
+    <li>Implemented individual modules for half adder and full adder with functional Verilog code and corresponding schematics.</li>
+    <li>Developed a multi-stage Wallace tree pipeline for efficient reduction of partial products.</li>
+    <li>Created a ripple carry adder in the final stage to accumulate the outputs and produce the final multiplication result.</li>
+    <li>Wrote a detailed Verilog testbench (stimulus module) to simulate the multiplier with a clock signal and asynchronous reset.</li>
+    <li>Simulated the design using Icarus Verilog (iverilog) and verified output accuracy with test vectors like 8'b01100100 × 8'b01100101.</li>
+    <li>Used monitoring statements in the testbench to track and print simulation results over time.</li>
+    <li>Verified correctness and timing behavior of the pipelined Wallace tree architecture under various inputs.</li>
 
+                    </ul> 
+                </div>
                 <!-- Project 2 -->
                 <div class="project-item">
-                    <h3 class="project-title">Solar Power Generation Optimization</h3>
-                    <p class="project-desc">Conducted detailed electrical performance tests on PV arrays and optimized power output using various algorithms to improve system efficiency.</p>
-                </div>
-
+                    <h3 class="project-title">Design and Implementation of a 4×4 Systolic Array for Matrix Multiplication in Verilog</h3>
+                    <ul class="exp-points">
+    <li>Implemented a 4×4 Systolic Array architecture in Verilog for matrix multiplication, inspired by Google’s TPU (Toy Version).</li>
+    <li>Designed a Multiply-and-Accumulate (MAC) Unit as the core processing element, handling 8-bit inputs and generating 24-bit partial sums.</li>
+    <li>Verified successful compilation and functional correctness of all modules using Cadence Xcelium.</li>
+    <li>Developed the systolic array as a synchronous system using a global clock (clk) and asynchronous reset (rst).</li>
+    <li>Integrated a quantization unit to scale 24-bit vertical partial sums down to 8-bit outputs.</li>
+    <li>Implemented an activation unit that processes quantized outputs and routes them back to the feature memory.</li>
+    <li>Created comprehensive Verilog testbenches to validate correct operation across a variety of 4×4 input matrices.</li>
+    <li>Verified correct accumulation of 16-bit products and 24-bit partial sums for unsigned 8-bit inputs.</li>
+    <li>Performed timing optimization and critical path analysis to improve performance.</li>
+                </ul> 
+                 </div>
                 <!-- Project 3 -->
                 <div class="project-item">
-                    <h3 class="project-title">4-bit Ripple Carry Adder (RCA)</h3>
-                    <p class="project-desc">Designed a 4-bit RCA using MAGIC, extracted the circuit-level netlist, and simulated its behavior using SPICE for VLSI applications.</p>
+                    <h3 class="project-title">Design and Simulation of a 4-bit Ripple Carry Adder Using MAGIC and SPICE</h3>
+                    <ul class="exp-points">
+    <li>Designed a 1-bit Full Adder (FA) circuit layout using MAGIC VLSI tool.</li>
+    <li>Ensured layout passed all Design Rule Checks (DRCs).</li>
+    <li>Extracted circuit-level netlist from the FA layout.</li>
+    <li>Simulated FA functionality using SPICE to verify correctness.</li>
+    <li>
+        Used hierarchical design flow to instantiate four FA units 
+        and construct a 4-bit Ripple Carry Adder (RCA).
+    </li>
+    <li>Verified the RCA layout passed all DRCs and extracted its netlist.</li>
+    <li>
+        Simulated the RCA using SPICE with two’s complement test cases:
+        <ul>
+            <li>(a) 4 + 5</li>
+            <li>(b) 4 − 5</li>
+        </ul>
+    </li>
+    <li>
+        Added flip-flops to create a clocked version of the 4-bit RCA 
+        with inputs A[4:1], B[4:1], and Cin.
+    </li>
+    <li>Verified the clocked RCA design passed all DRCs and extracted the netlist.</li>
+    <li>
+        Simulated the clocked design using SPICE to determine the 
+        maximum operating clock frequency.
+    </li>
+</ul>
                 </div>
 
                 <!-- Project 4 -->
