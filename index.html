@@ -949,13 +949,38 @@
             <div class="projects-container">
                 <!-- Project -1 -->
                 <div class="project-item">
-                    <h3 class="project-title">High Current High Voltage PCB Tester</h3>
-                    <p class="project-desc">Designed and developed a PCB-based tester for evaluating MEMS-based power relays under real-world high-current (750A) and high-voltage (1000V) conditions.</p>
+                    <h3 class="project-title">1MW, 1500V Solar Array Design and Simulation for Albany, NY </h3>
+                    <ul class="exp-points">   
+                        <ul>
+    <li>Designed and simulated a 1 MW photovoltaic (PV) array for Albany, NY, constrained by a 1500V DC voltage limit.</li>
+    <li>Developed a PV panel circuit model in MATLAB/Simulink using the NES144-7-550M solar module datasheet.</li>
+    <li>Performed environmental analysis using regional weather data to simulate temperature-dependent behavior of the solar panels.</li>
+    <li>Simulated and evaluated uniform and non-uniform shading effects on I-V and P-V characteristics of the array.</li>
+    <li>Optimized system configuration to use 1830  panels arranged in 30 modules per string and 61 parallel strings.</li>
+    <li>Conducted in-depth comparisons of central MPPT, MPPT per string, and MPPT per module under varying shading scenarios.</li>
+    <li>Demonstrated that distributed MPPT significantly improves power output under partial or non-uniform shading conditions.</li>
+    <li>Generated detailed I-V and P-V plots and validated simulation results against manufacturer datasheet specifications.</li>
+    <li>Presented design conclusions and MPPT configuration trade-offs for real-world implementation in solar power systems.</li>
+</ul>
+
                 </div>
                 <!-- Project 0 -->
                 <div class="project-item">
-                    <h3 class="project-title">High Current High Voltage PCB Tester</h3>
-                    <p class="project-desc">Designed and developed a PCB-based tester for evaluating MEMS-based power relays under real-world high-current (750A) and high-voltage (1000V) conditions.</p>
+                    <h3 class="project-title">Design and Layout of a Temperature-Dependent Voltage Reference Using P-Channel JFETs and Diodes</h3>
+                    <ul class="exp-points">    
+                       
+    <li>Designed an integrated circuit device to generate a temperature-proportional voltage (V<sub>PTAT</sub>) using pn-junction diode behavior.</li>
+    <li>Implemented diodes (D3, D4) using base and emitter regions of an IC NPN process to achieve temperature-dependent forward voltage characteristics.</li>
+    <li>Utilized p-channel JFETs (J1, J2, J4, J5) to maintain consistent bias current ratios across the diodes for output voltage accuracy.</li>
+    <li>Calculated voltage difference (ΔV<sub>D3,D4</sub>) using Shockley’s diode equation, showing linear dependence on absolute temperature.</li>
+    <li>Computed built-in potential (V<sub>bi</sub>) and reverse saturation current (I<sub>s</sub>) for the diode layout using process-specific doping levels and carrier lifetimes.</li>
+    <li>Designed the layout and calculated pinch-off voltage (V<sub>p</sub>) and zero-bias conductivity for the p-channel JFETs using semiconductor device physics.</li>
+    <li>Designed bias resistors (R2 and R3) using base diffusion, selecting geometry and material resistivity to bias J1 gate at 5V.</li>
+    <li>Implemented a feedback loop using an opamp to control JFET gates, minimizing bias ratio errors and improving V<sub>PTAT</sub> stability.</li>
+    <li>Explored area scaling by using larger layouts for D2, D6, D7, and J2/J4/J5 to reduce parasitic effects and improve thermal response.</li>
+    <li>Analyzed advantages of area scaling (e.g., thermal performance, layout efficiency) and considered trade-offs such as increased parasitic capacitance.</li>
+</ul>
+
                 </div>
                 <!-- Project 1 -->
                 <div class="project-item">
