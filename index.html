@@ -16,8 +16,6 @@
             --accent: #555555;
             --text: #333333;
             --text-secondary: #666666;
-            --card-bg: rgba(0, 0, 0, 0.03);
-            --card-hover: rgba(0, 0, 0, 0.08);
         }
 
         .dark-mode {
@@ -30,8 +28,6 @@
             --accent: #4a9ff5;
             --text: #e0e0e0;
             --text-secondary: #b0b0b0;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --card-hover: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -39,7 +35,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            transition: background-color 0.3s, color 0.3s, transform 0.3s, opacity 0.5s ease;
         }
 
         body {
@@ -168,7 +164,7 @@
 
         /* Sections */
         .section {
-            padding: 1.5rem 2rem;
+            padding: 1rem 2rem;
             min-height: auto;
             border-bottom: none;
             opacity: 0;
@@ -183,7 +179,7 @@
 
         .section-title {
             font-size: 1.8rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             position: relative;
             color: var(--lighter);
         }
@@ -232,11 +228,21 @@
             transform: translateY(0);
         }
 
+        .section.visible .about-text p:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .about-text p:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .about-text p:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+
         /* Education Section */
         .education-container {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .education-item {
@@ -251,197 +257,79 @@
             transform: translateY(0);
         }
 
+        .section.visible .education-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .education-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .education-item:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+
         .education-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
             margin-bottom: 0.5rem;
             flex-wrap: wrap;
         }
 
         .education-degree {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary);
-            margin-right: 1rem;
         }
 
         .education-date {
             color: var(--text-secondary);
             font-weight: 500;
-            font-size: 1rem;
         }
 
         .education-school {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
             color: var(--lighter);
         }
 
-        /* 3-Column Layout for Skills and Certifications */
-        .three-column-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .two-column-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        /* Card Styles */
-        .card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            height: 100%;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .card-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            font-style: italic;
-        }
-
-        /* Projects Section */
-        .projects-container {
+        /* Skills Section */
+        .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            height: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-
-        /* Project Overlay */
-        .project-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 90;
+        .skill-category {
+            padding: 0;
             opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            pointer-events: none;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        .project-overlay.visible {
+        .section.visible .skill-category {
             opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
+            transform: translateY(0);
         }
 
-        .expanded-card {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.95);
-            width: 80%;
-            max-width: 1000px;
-            background: var(--darker);
-            border-radius: 12px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            z-index: 100;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow-y: auto;
-            max-height: 80vh;
-            pointer-events: auto;
+        .section.visible .skill-category:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .skill-category:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .skill-category:nth-child(3) {
+            transition-delay: 0.6s;
         }
 
-        .expanded-card.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--primary);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .close-btn:hover {
-            transform: rotate(90deg) scale(1.1);
-            background: #ff6b6b;
-        }
-
-        .expanded-content {
-            padding: 20px 0;
-        }
-
-        /* Certifications Section with Links */
-        .cert-link {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 0.5rem;
+        .skill-category h3 {
+            margin-bottom: 0.6rem;
             color: var(--primary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: all 0.3s;
+            font-size: 1.2rem;
         }
 
-        .cert-link:hover {
-            text-decoration: underline;
-            transform: translateX(5px);
-        }
-
-        .cert-link i {
-            margin-right: 0.3rem;
-            font-size: 0.8rem;
-        }
-
-        /* Skills Section */
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.8rem;
+            gap: 0.4rem;
         }
 
         .skill-tag {
@@ -452,25 +340,193 @@
             font-size: 0.85rem;
             font-weight: 500;
             border: 1px solid rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .skill-tag:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            background-color: var(--primary);
-            color: var(--light);
+        }
+
+        /* Certifications Section */
+        .certs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-card {
+            padding: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .cert-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .cert-card:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .cert-card:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+        .section.visible .cert-card:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .cert-card:nth-child(4) {
+            transition-delay: 0.5s;
+        }
+        .section.visible .cert-card:nth-child(5) {
+            transition-delay: 0.6s;
+        }
+
+        .cert-card {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 1rem;
+            border-radius: 6px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cert-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            color: var(--lighter);
+        }
+
+        .cert-org {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .project-item {
+            padding: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .project-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .project-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .project-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .project-item:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+        .section.visible .project-item:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+
+        .project-item {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 1rem;
+            border-radius: 6px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .tag {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-size: 0.95rem;
         }
 
         /* Experience Section */
+        .exp-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
         .exp-item {
-            position: relative;
+            padding: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .exp-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .exp-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .exp-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .exp-item {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 1rem;
+            border-radius: 6px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .exp-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
         .exp-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             flex-wrap: wrap;
         }
 
@@ -487,25 +543,25 @@
 
         .exp-company {
             font-size: 1rem;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
             color: var(--lighter);
         }
 
         .exp-location {
             color: var(--text-secondary);
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
             font-style: italic;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         .exp-points {
             list-style-type: none;
-            padding-left: 1rem;
         }
 
         .exp-points li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             position: relative;
+            padding-left: 1.2rem;
             color: var(--text-secondary);
             line-height: 1.5;
             font-size: 0.95rem;
@@ -519,25 +575,74 @@
             transform: translateX(0);
         }
 
+        .section.visible .exp-points li:nth-child(1) {
+            transition-delay: 0.3s;
+        }
+        .section.visible .exp-points li:nth-child(2) {
+            transition-delay: 0.5s;
+        }
+        .section.visible .exp-points li:nth-child(3) {
+            transition-delay: 0.7s;
+        }
+
         .exp-points li::before {
             content: '▹';
             position: absolute;
-            left: -1rem;
+            left: 0;
             color: var(--primary);
             font-size: 0.9rem;
         }
 
         /* Achievements Section */
-        .achievement-item {
-            position: relative;
-            padding-left: 1.5rem;
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
         }
 
-        .achievement-item::before {
-            content: '★';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
+        .achievement-item {
+            padding: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible .achievement-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.visible .achievement-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .achievement-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        .section.visible .achievement-item:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+
+        .achievement-item {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 1rem;
+            border-radius: 6px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            color: var(--lighter);
+        }
+
+        .achievement-org {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
         }
 
         /* Contact Section */
@@ -557,6 +662,13 @@
         .section.visible .contact-text p {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .section.visible .contact-text p:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .section.visible .contact-text p:nth-child(2) {
+            transition-delay: 0.4s;
         }
 
         .contact-text a {
@@ -598,18 +710,6 @@
             }
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
         /* Responsive Design */
         @media (max-width: 1200px) {
             .sidebar {
@@ -617,9 +717,6 @@
             }
             .main-content {
                 margin-left: 300px;
-            }
-            .three-column-container {
-                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -642,20 +739,9 @@
             .section {
                 padding: 1rem;
             }
-            .three-column-container,
-            .two-column-container {
-                grid-template-columns: 1fr;
-            }
             .theme-toggle {
                 top: 10px;
                 right: 10px;
-            }
-            .about-content {
-                flex-direction: column;
-            }
-            .expanded-card {
-                width: 95%;
-                max-height: 85vh;
             }
         }
 
@@ -663,16 +749,19 @@
             .section-title {
                 font-size: 1.6rem;
             }
-            .education-header {
+            .education-header, .exp-header {
                 flex-direction: column;
-                align-items: flex-start;
+                gap: 0.3rem;
             }
-            .education-date {
-                margin-top: 0.3rem;
+            .education-date, .exp-date {
+                align-self: flex-start;
             }
-            .expanded-card {
-                width: 95%;
-                padding: 20px;
+            .about-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .skills-container, .certs-container, .achievements-container {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -689,14 +778,6 @@
             }
             .section-title {
                 font-size: 1.5rem;
-            }
-            .projects-container {
-                grid-template-columns: 1fr;
-            }
-            .expanded-card {
-                width: 95%;
-                max-height: 80vh;
-                padding: 15px;
             }
         }
     </style>
@@ -749,7 +830,7 @@
                 <!-- Education 1 -->
                 <div class="education-item">
                     <div class="education-header">
-                        <h3 class="education-degree">MS in Electrical and Computer Engineering</h3>
+                        <h3 class="education-degree">MS in Electrical and Computer Engineering </h3>
                         <span class="education-date">Aug 2023 - May 2025</span>
                     </div>
                     <h4 class="education-school">University at Albany, SUNY</h4>
@@ -781,10 +862,10 @@
         <!-- Skills Section -->
         <section class="section" id="skills">
             <h2 class="section-title">Skills</h2>
-            <div class="three-column-container">
+            <div class="skills-container">
                 <!-- Technical Skills -->
-                <div class="card">
-                    <h3 class="card-title">Technical Skills</h3>
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Power Electronics</span>
                         <span class="skill-tag">Power system Analysis</span>
@@ -796,8 +877,8 @@
                 </div>
                 
                 <!-- Tools & Technologies -->
-                <div class="card">
-                    <h3 class="card-title">Tools & Technologies</h3>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">MATLAB Simulink</span>
                         <span class="skill-tag">LTspice</span>
@@ -812,8 +893,8 @@
                 </div>
                 
                 <!-- Programming -->
-                <div class="card">
-                    <h3 class="card-title">Programming</h3>
+                <div class="skill-category">
+                    <h3>Programming</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">Verilog</span>
@@ -824,79 +905,49 @@
             </div>
         </section>
 
-        <!-- Certifications Section with Added Links -->
+        <!-- Certifications Section -->
         <section class="section" id="certifications">
             <h2 class="section-title">Certifications</h2>
-            <div class="three-column-container">
-                <div class="card">
-                    <h3 class="card-title">eSim Training</h3>
-                    <p class="card-subtitle">Spoken Tutorial-IIT Bombay</p>
-                    <a href="https://example.com/certificates/esim-training" class="cert-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Certificate
-                    </a>
+            <div class="certs-container">
+                <div class="cert-card">
+                    <h3 class="cert-title">eSim Training</h3>
+                    <p class="cert-org">Spoken Tutorial-IIT Bombay</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Fundamentals of Electric Vehicles</h3>
-                    <p class="card-subtitle">Udemy-SkillShark EduTech</p>
-                    <a href="https://example.com/certificates/electric-vehicles" class="cert-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Certificate
-                    </a>
+                <div class="cert-card">
+                    <h3 class="cert-title">Fundamentals of Electric Vehicles</h3>
+                    <p class="cert-org">Udemy-SkillShark EduTech</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Build a Face Recognition Application Using Python</h3>
-                    <p class="card-subtitle">GUVI</p>
-                    <a href="https://example.com/certificates/face-recognition" class="cert-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Certificate
-                    </a>
+                <div class="cert-card">
+                    <h3 class="cert-title">Build a Face Recognition Application Using Python</h3>
+                    <p class="cert-org">GUVI</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Scilab Training</h3>
-                    <p class="card-subtitle">Spoken Tutorial-IIT Bombay</p>
-                    <a href="https://example.com/certificates/scilab-training" class="cert-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Certificate
-                    </a>
+                <div class="cert-card">
+                    <h3 class="cert-title">Scilab Training</h3>
+                    <p class="cert-org">Spoken Tutorial-IIT Bombay</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Python 3.4.3</h3>
-                    <p class="card-subtitle">Spoken Tutorial-IIT Bombay</p>
-                    <a href="https://example.com/certificates/python" class="cert-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Certificate
-                    </a>
+                <div class="cert-card">
+                    <h3 class="cert-title">Python 3.4.3</h3>
+                    <p class="cert-org">Spoken Tutorial-IIT Bombay</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Arduino</h3>
-                    <p class="card-subtitle">Spoken Tutorial-IIT Bombay</p>
-                    <a href="https://example.com/certificates/arduino" class="cert-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Certificate
-                    </a>
+                <div class="cert-card">
+                    <h3 class="cert-title">Arduino</h3>
+                    <p class="cert-org">Spoken Tutorial-IIT Bombay</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">AutoCAD</h3>
-                    <p class="card-subtitle">Itronics Solutions</p>
-                    <a href="https://example.com/certificates/autocad" class="cert-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Certificate
-                    </a>
+                <div class="cert-card">
+                    <h3 class="cert-title">AutoCAD</h3>
+                    <p class="cert-org">Itronics Solutions</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">PLC</h3>
-                    <p class="card-subtitle">Itronics Solutions</p>
-                    <a href="https://example.com/certificates/plc" class="cert-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Certificate
-                    </a>
+                <div class="cert-card">
+                    <h3 class="cert-title">PLC</h3>
+                    <p class="cert-org">Itronics Solutions</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">IEEE Xplore Training</h3>
-                    <p class="card-subtitle">EBSCO Information Services (Participation Certificate)</p>
-                    <a href="https://example.com/certificates/ieee-xplore" class="cert-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Certificate
-                    </a>
+                <div class="cert-card">
+                    <h3 class="cert-title">IEEE Xplore Training</h3>
+                    <p class="cert-org">EBSCO Information Services (Participation Certificate)</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Electric Vehicle Engineering Fundamentals Training</h3>
-                    <p class="card-subtitle">SkillShark (Participation Certificate)</p>
-                    <a href="https://example.com/certificates/ev-engineering" class="cert-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Certificate
-                    </a>
+                <div class="cert-card">
+                    <h3 class="cert-title">Electric Vehicle Engineering Fundamentals Training</h3>
+                    <p class="cert-org">SkillShark (Participation Certificate)</p>
                 </div>
             </div>
         </section>
@@ -906,106 +957,216 @@
             <h2 class="section-title">Academic Projects</h2>
             <div class="projects-container">
                 <!-- Project 1 -->
-                <div class="project-card" data-project="1">
-                    <div>
-                        <h3 class="card-title">High Current High Voltage PCB Double Pulse Tester</h3>
-                        <p class="card-subtitle">MEMS Relay Characterization</p>
-                    </div>
-                </div>
-                
+                <div class="project-item">
+                    <h3 class="project-title">High Current High Voltage Printed Circuit
+ Board Double Pulse Tester</h3>
+                    <ul class="exp-points"> 
+    <li>Developed a custom PCB-based double pulse tester designed to evaluate high-voltage/high-current MEMS relays.</li>
+    <li>Enabled precision pulse generation up to 750A and 1000V with pulse widths ranging from 100µs to 1ms.</li>
+    <li>Combined benefits of solid-state and electromechanical relays through MEMS technology for fast, isolated switching.</li>
+    <li>Performed theoretical analysis of double pulse testing and switching behavior parameters for high-power devices.</li>
+    <li>Designed and simulated inductor and capacitor components using LTSpice based on energy balance equations and switching dynamics.</li>
+    <li>Designed a six-layer PCB using KiCad with custom footprints and schematic symbols for optimal layout and minimal parasitic effects.</li>
+    <li>Separated voltage rails across layers for positive, midpoint, and negative terminals to ensure signal integrity and safety.</li>
+    <li>Tested the PCB across a range of conditions (100V–700V) and pulse widths (100µs–700µs), confirming functionality.</li>
+    <li>Analyzed turn-on and turn-off transients to assess switching speed, energy losses, and suitability of the DUT under extreme conditions.</li>
+    <li>Validated the tester's performance for MEMS relay characterization in high-current, high-voltage environments.</li>
+</ul>
+
+                   </div>
                 <!-- Project 2 -->
-                <div class="project-card" data-project="2">
-                    <div>
-                        <h3 class="card-title">Double Pulse Generation Using Arduino</h3>
-                        <p class="card-subtitle">Gate Driver Control</p>
-                    </div>
-                </div>
-                
+                <div class="project-item">
+                    <h3 class="project-title">Double Pulse Generation Using Arduino for Gate Driver Control</h3>
+                    <ul class="exp-points"> 
+    <li>Implemented a microcontroller-based solution for generating configurable double pulses using Arduino UNO R3.</li>
+    <li>Utilized built-in GPIO functionality and USB serial communication for seamless data input and control.</li>
+    <li>Designed an Arduino sketch that accepts user-defined pulse widths and blank time via the Serial Monitor.</li>
+    <li>Used direct port manipulation (PORTD) for high-speed digital output control, improving pulse precision.</li>
+    <li>Included debounce logic for clean, one-time pulse triggering using a push-button input on Pin 7.</li>
+    <li>Configured the microcontroller to respond to serial input in the format: &lt;PW1&gt; &lt;Blank&gt; &lt;PW2&gt; (e.g., 500 50 50).</li>
+    <li>Established reliable triggering and clean waveform generation without the need to re-upload code for changes.</li>
+    <li>Connected the Arduino's output pin to a gate driver circuit to control high-power switching devices.</li>
+    <li>Observed and verified generated waveforms on an oscilloscope for both standalone Arduino output and driver-interfaced output.</li>
+    <li>Enabled rapid prototyping and repeatable testing through USB-powered Arduino setup with minimal hardware.</li>
+</ul>
+                   </div>
                 <!-- Project 3 -->
-                <div class="project-card" data-project="3">
-                    <div>
-                        <h3 class="card-title">Double Pulse Generation from Function Generator</h3>
-                        <p class="card-subtitle">Python Automation</p>
-                    </div>
-                </div>
-                
+                <div class="project-item">
+                    <h3 class="project-title">Double Pulse Generation from Function Generator Using Python Script</h3>
+                    <ul class="exp-points"> 
+    <li>Used Siglent SDG1025 Arbitrary Waveform Generator for precise gate pulse generation.</li>
+    <li>Developed a Python script to automate the creation of custom double-pulse waveforms and export them as .CSV files.</li>
+    <li>Enabled user input for waveform parameters: first pulse width, blank time, second pulse width, total duration, and amplitude.</li>
+    <li>Generated 16,384-point waveforms to meet the arbitrary memory requirements of the Siglent function generator.</li>
+    <li>Uploaded and managed waveform files through Siglent EasyWave software interface.</li>
+    <li>Configured the generator in Burst Mode with N-Cycle set to 1 and manual trigger enabled for single-shot pulse release.</li>
+    <li>Visualized the output waveform using an oscilloscope to confirm correct operation with and without a gate driver circuit.</li>
+    <li>Enabled repeatable and efficient testing with stored waveform configurations accessible from the generator's ARB memory.</li>
+</ul>
+                   </div>
                 <!-- Project 4 -->
-                <div class="project-card" data-project="4">
-                    <div>
-                        <h3 class="card-title">1MW, 1500V Solar Array Design</h3>
-                        <p class="card-subtitle">MATLAB/Simulink Simulation</p>
-                    </div>
+                <div class="project-item">
+                    <h3 class="project-title">1MW, 1500V Solar Array Design and Simulation</h3>
+                    <ul class="exp-points">   
+    <li>Designed and simulated a 1 MW photovoltaic (PV) array for Albany, NY, constrained by a 1500V DC voltage limit.</li>
+    <li>Developed a PV panel circuit model in MATLAB/Simulink using the NES144-7-550M solar module datasheet.</li>
+    <li>Performed environmental analysis using regional weather data to simulate temperature-dependent behavior of the solar panels.</li>
+    <li>Simulated and evaluated uniform and non-uniform shading effects on I-V and P-V characteristics of the array.</li>
+    <li>Optimized system configuration to use 1830  panels arranged in 30 modules per string and 61 parallel strings.</li>
+    <li>Conducted in-depth comparisons of central MPPT, MPPT per string, and MPPT per module under varying shading scenarios.</li>
+    <li>Demonstrated that distributed MPPT significantly improves power output under partial or non-uniform shading conditions.</li>
+    <li>Generated detailed I-V and P-V plots and validated simulation results against manufacturer datasheet specifications.</li>
+    <li>Presented design conclusions and MPPT configuration trade-offs for real-world implementation in solar power systems.</li>
+</ul>
                 </div>
-                
                 <!-- Project 5 -->
-                <div class="project-card" data-project="5">
-                    <div>
-                        <h3 class="card-title">Temperature-Dependent Voltage Reference</h3>
-                        <p class="card-subtitle">P-Channel JFETs and Diodes</p>
-                    </div>
-                </div>
+                <div class="project-item">
+                    <h3 class="project-title">Design and Layout of a Temperature-Dependent Voltage Reference Using P-Channel JFETs and Diodes</h3>
+                    <ul class="exp-points">    
+                       
+    <li>Designed an integrated circuit device to generate a temperature-proportional voltage (V<sub>PTAT</sub>) using pn-junction diode behavior.</li>
+    <li>Implemented diodes (D3, D4) using base and emitter regions of an IC NPN process to achieve temperature-dependent forward voltage characteristics.</li>
+    <li>Utilized p-channel JFETs (J1, J2, J4, J5) to maintain consistent bias current ratios across the diodes for output voltage accuracy.</li>
+    <li>Calculated voltage difference (ΔV<sub>D3,D4</sub>) using Shockley's diode equation, showing linear dependence on absolute temperature.</li>
+    <li>Computed built-in potential (V<sub>bi</sub>) and reverse saturation current (I<sub>s</sub>) for the diode layout using process-specific doping levels and carrier lifetimes.</li>
+    <li>Designed the layout and calculated pinch-off voltage (V<sub>p</sub>) and zero-bias conductivity for the p-channel JFETs using semiconductor device physics.</li>
+    <li>Designed bias resistors (R2 and R3) using base diffusion, selecting geometry and material resistivity to bias J1 gate at 5V.</li>
+    <li>Implemented a feedback loop using an opamp to control JFET gates, minimizing bias ratio errors and improving V<sub>PTAT</sub> stability.</li>
+    <li>Explored area scaling by using larger layouts for D2, D6, D7, and J2/J4/J5 to reduce parasitic effects and improve thermal response.</li>
+    <li>Analyzed advantages of area scaling (e.g., thermal performance, layout efficiency) and considered trade-offs such as increased parasitic capacitance.</li>
+</ul>
 
+                </div>
                 <!-- Project 6 -->
-                <div class="project-card" data-project="6">
-                    <div>
-                        <h3 class="card-title">Pipelined Wallace Tree Multiplier</h3>
-                        <p class="card-subtitle">Verilog Implementation</p>
-                    </div>
-                </div>
+                <div class="project-item">
+                    <h3 class="project-title">Design and Implementation of a Pipelined Wallace Tree Multiplier in Verilog</h3>
+                    <ul class="exp-points">
+                     
+    <li>Designed and implemented a pipelined Wallace Tree Multiplier using Verilog for high-speed binary multiplication.</li>
+    <li>Used half adders and full adders to construct the partial product reduction stages in the multiplier.</li>
+    <li>Adopted pipelining to reduce the critical path delay and improve performance over traditional Wallace tree designs.</li>
+    <li>Addressed limitations of traditional Wallace tree multipliers such as increased area and power consumption.</li>
+    <li>Followed a bottom-up design methodology, building the system from leaf cells (HA and FA) to a complete 8×8 multiplier.</li>
+    <li>Implemented individual modules for half adder and full adder with functional Verilog code and corresponding schematics.</li>
+    <li>Developed a multi-stage Wallace tree pipeline for efficient reduction of partial products.</li>
+    <li>Created a ripple carry adder in the final stage to accumulate the outputs and produce the final multiplication result.</li>
+    <li>Wrote a detailed Verilog testbench (stimulus module) to simulate the multiplier with a clock signal and asynchronous reset.</li>
+    <li>Simulated the design using Icarus Verilog (iverilog) and verified output accuracy with test vectors like 8'b01100100 × 8'b01100101.</li>
+    <li>Used monitoring statements in the testbench to track and print simulation results over time.</li>
+    <li>Verified correctness and timing behavior of the pipelined Wallace tree architecture under various inputs.</li>
 
+                    </ul> 
+                </div>
                 <!-- Project 7 -->
-                <div class="project-card" data-project="7">
-                    <div>
-                        <h3 class="card-title">4×4 Systolic Array for Matrix Multiplication</h3>
-                        <p class="card-subtitle">Verilog Design</p>
-                    </div>
-                </div>
-
+                <div class="project-item">
+                    <h3 class="project-title">Design and Implementation of a 4×4 Systolic Array for Matrix Multiplication in Verilog</h3>
+                    <ul class="exp-points">
+    <li>Implemented a 4×4 Systolic Array architecture in Verilog for matrix multiplication, inspired by Google's TPU (Toy Version).</li>
+    <li>Designed a Multiply-and-Accumulate (MAC) Unit as the core processing element, handling 8-bit inputs and generating 24-bit partial sums.</li>
+    <li>Verified successful compilation and functional correctness of all modules using Cadence Xcelium.</li>
+    <li>Developed the systolic array as a synchronous system using a global clock (clk) and asynchronous reset (rst).</li>
+    <li>Integrated a quantization unit to scale 24-bit vertical partial sums down to 8-bit outputs.</li>
+    <li>Implemented an activation unit that processes quantized outputs and routes them back to the feature memory.</li>
+    <li>Created comprehensive Verilog testbenches to validate correct operation across a variety of 4×4 input matrices.</li>
+    <li>Verified correct accumulation of 16-bit products and 24-bit partial sums for unsigned 8-bit inputs.</li>
+    <li>Performed timing optimization and critical path analysis to improve performance.</li>
+                </ul> 
+                 </div>
                 <!-- Project 8 -->
-                <div class="project-card" data-project="8">
-                    <div>
-                        <h3 class="card-title">4-bit Ripple Carry Adder</h3>
-                        <p class="card-subtitle">MAGIC and SPICE Simulation</p>
-                    </div>
+                <div class="project-item">
+                    <h3 class="project-title">Design and Simulation of a 4-bit Ripple Carry Adder Using MAGIC and SPICE</h3>
+                    <ul class="exp-points">
+    <li>Designed a 1-bit Full Adder (FA) circuit layout using MAGIC VLSI tool.</li>
+    <li>Ensured layout passed all Design Rule Checks (DRCs).</li>
+    <li>Extracted circuit-level netlist from the FA layout.</li>
+    <li>Simulated FA functionality using SPICE to verify correctness.</li>
+    <li>
+        Used hierarchical design flow to instantiate four FA units 
+        and construct a 4-bit Ripple Carry Adder (RCA).
+    </li>
+    <li>Verified the RCA layout passed all DRCs and extracted its netlist.</li>
+    <li>
+        Simulated the RCA using SPICE with two's complement test cases:
+        <pre>
+            (a) 4 + 5
+            (b) 4 − 5
+        </pre>
+    </li>
+    <li>
+        Added flip-flops to create a clocked version of the 4-bit RCA 
+        with inputs A[4:1], B[4:1], and Cin.
+    </li>
+    <li>Verified the clocked RCA design passed all DRCs and extracted the netlist.</li>
+    <li>
+        Simulated the clocked design using SPICE to determine the 
+        maximum operating clock frequency.
+    </li>
+</ul>
                 </div>
 
                 <!-- Project 9 -->
-                <div class="project-card" data-project="9">
-                    <div>
-                        <h3 class="card-title">Hybrid Power Generation System</h3>
-                        <p class="card-subtitle">Renewable Energy Solution</p>
-                    </div>
-                </div>
+                <div class="project-item">
+                    <h3 class="project-title">Hybrid Power Generation System</h3>
+                      <ul class="exp-points">
+                            <li>Developed a hybrid power generation system combining a roof turbine ventilator and solar energy</li>
+                            <li>Uses a boost converter, battery, inverter, and control electronics to generate and distribute electricity</li>
+                            <li>Provides a solution for pollution reduction, energy needs in remote areas, and reduces reliance on non-renewable sources</li>
+                            <li>Surplus power can be supplied to local households or the electric grid</li>
+                            <li>The roof ventilator generates mechanical energy through airflow, which is converted into electricity using a dynamo and gears</li>
+                            <li>A rectifier converts the AC output from the dynamo to DC</li>
+                            <li>Solar panels are mounted on a dual-axis tracker to maximize sunlight exposure and efficiency</li>
+                            <li>The boost converter raises voltage to a sufficient level to charge the battery through a battery charger</li>
+                            <li>An inverter with overload protection powers the AC loads</li>
+                            <li>A relay circuit manages the power flow between the boost converter, battery, and inverter</li>
+                            <li>The one of the relay (say 1) disconnects the charger once the battery is fully charged to prevent overcharging</li>
+                            <li>
+  <pre>
+Relay (say 2) Operation Modes:
+    CASE 1:
+    (Boost Converter → Charger & Battery → Relay → Inverter → Load)
+    When power from solar and ventilator is available, the boost converter charges the battery and supplies the inverter
+
+    CASE 2:
+    (Battery → Relay → Inverter → Load)
+    When there is low or no generation, the battery alone supplies the inverter to power the load
+  </pre>
+</li>
+
+                          <li>Supports sustainable energy usage for future generations.</li>
+                           </ul>
+               </div>
 
                 <!-- Project 10 -->
-                <div class="project-card" data-project="10">
-                    <div>
-                        <h3 class="card-title">Vehicle Control System for Accident Prevention</h3>
-                        <p class="card-subtitle">Smart Safety System</p>
-                    </div>
+                <div class="project-item">
+                    <h3 class="project-title">Vehicle Control System for Accident Prevention</h3>
+                  <ul class="exp-points">
+                        <li>Designed a smart vehicle control system to prevent accidents and enhance road safety</li>
+                        <li>Designed a smart vehicle control system to prevent accidents and enhance road safety</li>
+                        <li>Integrated multiple sensors: RF, IR, MQ-3 alcohol sensor, GSM module, and seatbelt/helmet detection</li>
+                        <li>RF module detects speed-restricted zones; vehicle automatically slows down using a throttle control mechanism</li>
+                        <li>IR sensors detect obstacles and maintain safe distance between vehicles to avoid collisions</li>
+                        <li>If the system is tampered with, the GSM module sends alerts (with vehicle number) to the nearest police station</li>
+                        <li>Alcohol detection (MQ-3) stops the engine and sends an alert via SMS to police and family if the driver is intoxicated</li>
+                       <li>
+  <pre>
+Vehicle ignition is allowed only if:
+    - No alcohol is detected,
+    - Seat belt (or helmet for two-wheelers) is used,
+    - Driver is not drowsy (drowsiness detection mechanism included)
+  </pre>
+</li>
+
+                  </ul>
                 </div>
-            </div>
-            
-            <!-- Project Overlay -->
-            <div class="project-overlay" id="projectOverlay"></div>
-            <div class="expanded-card" id="expandedCard">
-                <div class="close-btn" id="closeBtn">
-                    <i class="fas fa-times"></i>
-                </div>
-                <div>
-                    <h3 class="expanded-title" id="expandedTitle"></h3>
-                    <p class="expanded-subtitle" id="expandedSubtitle"></p>
-                </div>
-                <div class="expanded-content" id="expandedContent"></div>
             </div>
         </section>
 
         <!-- Experience Section -->
         <section class="section" id="experience">
             <h2 class="section-title">Work Experience</h2>
-            <div class="two-column-container">
+            <div class="exp-container">
                 <!-- Experience 1 -->
-                <div class="card">
+                <div class="exp-item">
                     <div class="exp-header">
                         <h3 class="exp-title">Controller Development Intern</h3>
                         <span class="exp-date">Jan 2023 - Jun 2023</span>
@@ -1026,7 +1187,7 @@
                 </div>
                 
                 <!-- Experience 2 -->
-                <div class="card">
+                <div class="exp-item">
                     <div class="exp-header">
                         <h3 class="exp-title">Substation Operations Intern</h3>
                         <span class="exp-date">Dec 2019 - Mar 2020</span>
@@ -1053,41 +1214,41 @@
         <!-- Achievements Section -->
         <section class="section" id="achievements">
             <h2 class="section-title">Achievements & Awards</h2>
-            <div class="two-column-container">
-                <div class="card">
-                    <h3 class="card-title">Dean's Merit Scholarship (2023-2025)</h3>
-                    <p class="card-subtitle">University at Albany, SUNY</p>
+            <div class="achievements-container">
+                <div class="achievement-item">
+                    <h3 class="achievement-title">Dean's Merit Scholarship (2023-2025)</h3>
+                    <p class="achievement-org">University at Albany, SUNY</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">University Rank 10 (2023)</h3>
-                    <p class="card-subtitle">Osmania University</p>
+                <div class="achievement-item">
+                    <h3 class="achievement-title">University Rank 10 (2023)</h3>
+                    <p class="achievement-org">Osmania University</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Telangana State Merit Scholarship (2017-2023)</h3>
-                    <p class="card-subtitle">Government of Telangana</p>
+                <div class="achievement-item">
+                    <h3 class="achievement-title">Telangana State Merit Scholarship (2017-2023)</h3>
+                    <p class="achievement-org">Government of Telangana</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">2nd Place - Poster Presentation Competition (2020)</h3>
-                    <p class="card-subtitle">Matrusri Engineering College</p>
+                <div class="achievement-item">
+                    <h3 class="achievement-title">2nd Place - Poster Presentation Competition (2020)</h3>
+                    <p class="achievement-org">Matrusri Engineering College</p>
                 </div>
             </div>
         </section>
 
        <!-- Contact Section -->
-        <section class="section" id="contact">
-            <h2 class="section-title">Let's Connect</h2>
-            <div class="contact-text">
-                <p>
-                    I'm excited to bring my passion for electrical engineering and hands-on experience in power electronics, VLSI, and renewable energy to impactful, real-world applications. Whether you're looking for a dedicated engineer to join your team, interested in collaborative innovation, or just want to connect and exchange ideas in the field, I'd love to hear from you.
-                </p>
+<section class="section" id="contact">
+    <h2 class="section-title">Let's Connect</h2>
+    <div class="contact-text">
+        <p>
+            I'm excited to bring my passion for electrical engineering and hands-on experience in power electronics, VLSI, and renewable energy to impactful, real-world applications. Whether you're looking for a dedicated engineer to join your team, interested in collaborative innovation, or just want to connect and exchange ideas in the field, I'd love to hear from you.
+        </p>
 
-                <p>
-                    Feel free to reach out via email at <a href="mailto:gkuntamalla@albany.edu">gkuntamalla@albany.edu</a> or connect with me on 
-                    <a href="https://linkedin.com/in/ganesh-kuntamalla352" target="_blank">LinkedIn</a>.
-                </p>
-            </div>
-        </section>
+        <p>
+            Feel free to reach out via email at <a href="mailto:gkuntamalla@albany.edu">gkuntamalla@albany.edu</a> or connect with me on 
+            <a href="https://linkedin.com/in/ganesh-kuntamalla352" target="_blank">LinkedIn</a>.
+        </p>
     </div>
+</section>
+
 
     <script>
         // Theme Toggle Functionality
@@ -1123,6 +1284,9 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                } else {
+                    // Uncomment below if you want elements to fade out when scrolling up
+                    // entry.target.classList.remove('visible');
                 }
             });
         }, {
@@ -1133,304 +1297,10 @@
             observer.observe(section);
         });
 
-        // Project Card Hover Functionality
-        const projectCards = document.querySelectorAll('.project-card');
-        const projectOverlay = document.getElementById('projectOverlay');
-        const expandedCard = document.getElementById('expandedCard');
-        const expandedTitle = document.getElementById('expandedTitle');
-        const expandedSubtitle = document.getElementById('expandedSubtitle');
-        const expandedContent = document.getElementById('expandedContent');
-        const closeBtn = document.getElementById('closeBtn');
-
-        // Project data for all 10 projects
-        const projectData = {
-            1: {
-                title: "High Current High Voltage PCB Double Pulse Tester",
-                subtitle: "MEMS Relay Characterization",
-                content: `
-                    <ul class="exp-points"> 
-                        <li>Developed a custom PCB-based double pulse tester designed to evaluate high-voltage/high-current MEMS relays.</li>
-                        <li>Enabled precision pulse generation up to 750A and 1000V with pulse widths ranging from 100µs to 1ms.</li>
-                        <li>Combined benefits of solid-state and electromechanical relays through MEMS technology for fast, isolated switching.</li>
-                        <li>Performed theoretical analysis of double pulse testing and switching behavior parameters for high-power devices.</li>
-                        <li>Designed and simulated inductor and capacitor components using LTSpice based on energy balance equations and switching dynamics.</li>
-                        <li>Designed a six-layer PCB using KiCad with custom footprints and schematic symbols for optimal layout and minimal parasitic effects.</li>
-                        <li>Separated voltage rails across layers for positive, midpoint, and negative terminals to ensure signal integrity and safety.</li>
-                        <li>Tested the PCB across a range of conditions (100V–700V) and pulse widths (100µs–700µs), confirming functionality.</li>
-                        <li>Analyzed turn-on and turn-off transients to assess switching speed, energy losses, and suitability of the DUT under extreme conditions.</li>
-                        <li>Validated the tester's performance for MEMS relay characterization in high-current, high-voltage environments.</li>
-                    </ul>
-                `
-            },
-            2: {
-                title: "Double Pulse Generation Using Arduino for Gate Driver Control",
-                subtitle: "Gate Driver Control",
-                content: `
-                    <ul class="exp-points"> 
-                        <li>Implemented a microcontroller-based solution for generating configurable double pulses using Arduino UNO R3.</li>
-                        <li>Utilized built-in GPIO functionality and USB serial communication for seamless data input and control.</li>
-                        <li>Designed an Arduino sketch that accepts user-defined pulse widths and blank time via the Serial Monitor.</li>
-                        <li>Used direct port manipulation (PORTD) for high-speed digital output control, improving pulse precision.</li>
-                        <li>Included debounce logic for clean, one-time pulse triggering using a push-button input on Pin 7.</li>
-                        <li>Configured the microcontroller to respond to serial input in the format: &lt;PW1&gt; &lt;Blank&gt; &lt;PW2&gt; (e.g., 500 50 50).</li>
-                        <li>Established reliable triggering and clean waveform generation without the need to re-upload code for changes.</li>
-                        <li>Connected the Arduino's output pin to a gate driver circuit to control high-power switching devices.</li>
-                        <li>Observed and verified generated waveforms on an oscilloscope for both standalone Arduino output and driver-interfaced output.</li>
-                        <li>Enabled rapid prototyping and repeatable testing through USB-powered Arduino setup with minimal hardware.</li>
-                    </ul>
-                `
-            },
-            3: {
-                title: "Double Pulse Generation from Function Generator Using Python Script",
-                subtitle: "Python Automation",
-                content: `
-                    <ul class="exp-points"> 
-                        <li>Used Siglent SDG1025 Arbitrary Waveform Generator for precise gate pulse generation.</li>
-                        <li>Developed a Python script to automate the creation of custom double-pulse waveforms and export them as .CSV files.</li>
-                        <li>Enabled user input for waveform parameters: first pulse width, blank time, second pulse width, total duration, and amplitude.</li>
-                        <li>Generated 16,384-point waveforms to meet the arbitrary memory requirements of the Siglent function generator.</li>
-                        <li>Uploaded and managed waveform files through Siglent EasyWave software interface.</li>
-                        <li>Configured the generator in Burst Mode with N-Cycle set to 1 and manual trigger enabled for single-shot pulse release.</li>
-                        <li>Visualized the output waveform using an oscilloscope to confirm correct operation with and without a gate driver circuit.</li>
-                        <li>Enabled repeatable and efficient testing with stored waveform configurations accessible from the generator's ARB memory.</li>
-                    </ul>
-                `
-            },
-            4: {
-                title: "1MW, 1500V Solar Array Design and Simulation",
-                subtitle: "MATLAB/Simulink Simulation",
-                content: `
-                    <ul class="exp-points">   
-                        <li>Designed and simulated a 1 MW photovoltaic (PV) array for Albany, NY, constrained by a 1500V DC voltage limit.</li>
-                        <li>Developed a PV panel circuit model in MATLAB/Simulink using the NES144-7-550M solar module datasheet.</li>
-                        <li>Performed environmental analysis using regional weather data to simulate temperature-dependent behavior of the solar panels.</li>
-                        <li>Simulated and evaluated uniform and non-uniform shading effects on I-V and P-V characteristics of the array.</li>
-                        <li>Optimized system configuration to use 1830 panels arranged in 30 modules per string and 61 parallel strings.</li>
-                        <li>Conducted in-depth comparisons of central MPPT, MPPT per string, and MPPT per module under varying shading scenarios.</li>
-                        <li>Demonstrated that distributed MPPT significantly improves power output under partial or non-uniform shading conditions.</li>
-                        <li>Generated detailed I-V and P-V plots and validated simulation results against manufacturer datasheet specifications.</li>
-                        <li>Presented design conclusions and MPPT configuration trade-offs for real-world implementation in solar power systems.</li>
-                    </ul>
-                `
-            },
-            5: {
-                title: "Design and Layout of a Temperature-Dependent Voltage Reference Using P-Channel JFETs and Diodes",
-                subtitle: "P-Channel JFETs and Diodes",
-                content: `
-                    <ul class="exp-points">    
-                        <li>Designed an integrated circuit device to generate a temperature-proportional voltage (V<sub>PTAT</sub>) using pn-junction diode behavior.</li>
-                        <li>Implemented diodes (D3, D4) using base and emitter regions of an IC NPN process to achieve temperature-dependent forward voltage characteristics.</li>
-                        <li>Utilized p-channel JFETs (J1, J2, J4, J5) to maintain consistent bias current ratios across the diodes for output voltage accuracy.</li>
-                        <li>Calculated voltage difference (ΔV<sub>D3,D4</sub>) using Shockley's diode equation, showing linear dependence on absolute temperature.</li>
-                        <li>Computed built-in potential (V<sub>bi</sub>) and reverse saturation current (I<sub>s</sub>) for the diode layout using process-specific doping levels and carrier lifetimes.</li>
-                        <li>Designed the layout and calculated pinch-off voltage (V<sub>p</sub>) and zero-bias conductivity for the p-channel JFETs using semiconductor device physics.</li>
-                        <li>Designed bias resistors (R2 and R3) using base diffusion, selecting geometry and material resistivity to bias J1 gate at 5V.</li>
-                        <li>Implemented a feedback loop using an opamp to control JFET gates, minimizing bias ratio errors and improving V<sub>PTAT</sub> stability.</li>
-                        <li>Explored area scaling by using larger layouts for D2, D6, D7, and J2/J4/J5 to reduce parasitic effects and improve thermal response.</li>
-                        <li>Analyzed advantages of area scaling (e.g., thermal performance, layout efficiency) and considered trade-offs such as increased parasitic capacitance.</li>
-                    </ul>
-                `
-            },
-            6: {
-                title: "Design and Implementation of a Pipelined Wallace Tree Multiplier in Verilog",
-                subtitle: "Verilog Implementation",
-                content: `
-                    <ul class="exp-points">
-                        <li>Designed and implemented a pipelined Wallace Tree Multiplier using Verilog for high-speed binary multiplication.</li>
-                        <li>Used half adders and full adders to construct the partial product reduction stages in the multiplier.</li>
-                        <li>Adopted pipelining to reduce the critical path delay and improve performance over traditional Wallace tree designs.</li>
-                        <li>Addressed limitations of traditional Wallace tree multipliers such as increased area and power consumption.</li>
-                        <li>Followed a bottom-up design methodology, building the system from leaf cells (HA and FA) to a complete 8×8 multiplier.</li>
-                        <li>Implemented individual modules for half adder and full adder with functional Verilog code and corresponding schematics.</li>
-                        <li>Developed a multi-stage Wallace tree pipeline for efficient reduction of partial products.</li>
-                        <li>Created a ripple carry adder in the final stage to accumulate the outputs and produce the final multiplication result.</li>
-                        <li>Wrote a detailed Verilog testbench (stimulus module) to simulate the multiplier with a clock signal and asynchronous reset.</li>
-                        <li>Simulated the design using Icarus Verilog (iverilog) and verified output accuracy with test vectors like 8'b01100100 × 8'b01100101.</li>
-                        <li>Used monitoring statements in the testbench to track and print simulation results over time.</li>
-                        <li>Verified correctness and timing behavior of the pipelined Wallace tree architecture under various inputs.</li>
-                    </ul> 
-                `
-            },
-            7: {
-                title: "Design and Implementation of a 4×4 Systolic Array for Matrix Multiplication in Verilog",
-                subtitle: "Verilog Design",
-                content: `
-                    <ul class="exp-points">
-                        <li>Implemented a 4×4 Systolic Array architecture in Verilog for matrix multiplication, inspired by Google's TPU (Toy Version).</li>
-                        <li>Designed a Multiply-and-Accumulate (MAC) Unit as the core processing element, handling 8-bit inputs and generating 24-bit partial sums.</li>
-                        <li>Verified successful compilation and functional correctness of all modules using Cadence Xcelium.</li>
-                        <li>Developed the systolic array as a synchronous system using a global clock (clk) and asynchronous reset (rst).</li>
-                        <li>Integrated a quantization unit to scale 24-bit vertical partial sums down to 8-bit outputs.</li>
-                        <li>Implemented an activation unit that processes quantized outputs and routes them back to the feature memory.</li>
-                        <li>Created comprehensive Verilog testbenches to validate correct operation across a variety of 4×4 input matrices.</li>
-                        <li>Verified correct accumulation of 16-bit products and 24-bit partial sums for unsigned 8-bit inputs.</li>
-                        <li>Performed timing optimization and critical path analysis to improve performance.</li>
-                    </ul> 
-                `
-            },
-            8: {
-                title: "Design and Simulation of a 4-bit Ripple Carry Adder Using MAGIC and SPICE",
-                subtitle: "MAGIC and SPICE Simulation",
-                content: `
-                    <ul class="exp-points">
-                        <li>Designed a 1-bit Full Adder (FA) circuit layout using MAGIC VLSI tool.</li>
-                        <li>Ensured layout passed all Design Rule Checks (DRCs).</li>
-                        <li>Extracted circuit-level netlist from the FA layout.</li>
-                        <li>Simulated FA functionality using SPICE to verify correctness.</li>
-                        <li>Used hierarchical design flow to instantiate four FA units and construct a 4-bit Ripple Carry Adder (RCA).</li>
-                        <li>Verified the RCA layout passed all DRCs and extracted its netlist.</li>
-                        <li>Simulated the RCA using SPICE with two's complement test cases:
-                            <pre>
-                                (a) 4 + 5
-                                (b) 4 − 5
-                            </pre>
-                        </li>
-                        <li>Added flip-flops to create a clocked version of the 4-bit RCA with inputs A[4:1], B[4:1], and Cin.</li>
-                        <li>Verified the clocked RCA design passed all DRCs and extracted the netlist.</li>
-                        <li>Simulated the clocked design using SPICE to determine the maximum operating clock frequency.</li>
-                    </ul>
-                `
-            },
-            9: {
-                title: "Hybrid Power Generation System",
-                subtitle: "Renewable Energy Solution",
-                content: `
-                    <ul class="exp-points">
-                        <li>Developed a hybrid power generation system combining a roof turbine ventilator and solar energy</li>
-                        <li>Uses a boost converter, battery, inverter, and control electronics to generate and distribute electricity</li>
-                        <li>Provides a solution for pollution reduction, energy needs in remote areas, and reduces reliance on non-renewable sources</li>
-                        <li>Surplus power can be supplied to local households or the electric grid</li>
-                        <li>The roof ventilator generates mechanical energy through airflow, which is converted into electricity using a dynamo and gears</li>
-                        <li>A rectifier converts the AC output from the dynamo to DC</li>
-                        <li>Solar panels are mounted on a dual-axis tracker to maximize sunlight exposure and efficiency</li>
-                        <li>The boost converter raises voltage to a sufficient level to charge the battery through a battery charger</li>
-                        <li>An inverter with overload protection powers the AC loads</li>
-                        <li>A relay circuit manages the power flow between the boost converter, battery, and inverter</li>
-                        <li>The one of the relay (say 1) disconnects the charger once the battery is fully charged to prevent overcharging</li>
-                        <li>
-                            <pre>
-    Relay (say 2) Operation Modes:
-        CASE 1:
-        (Boost Converter → Charger & Battery → Relay → Inverter → Load)
-        When power from solar and ventilator is available, the boost converter charges the battery and supplies the inverter
-
-        CASE 2:
-        (Battery → Relay → Inverter → Load)
-        When there is low or no generation, the battery alone supplies the inverter to power the load
-                            </pre>
-                        </li>
-                        <li>Supports sustainable energy usage for future generations.</li>
-                    </ul>
-                `
-            },
-            10: {
-                title: "Vehicle Control System for Accident Prevention",
-                subtitle: "Smart Safety System",
-                content: `
-                    <ul class="exp-points">
-                        <li>Designed a smart vehicle control system to prevent accidents and enhance road safety</li>
-                        <li>Integrated multiple sensors: RF, IR, MQ-3 alcohol sensor, GSM module, and seatbelt/helmet detection</li>
-                        <li>RF module detects speed-restricted zones; vehicle automatically slows down using a throttle control mechanism</li>
-                        <li>IR sensors detect obstacles and maintain safe distance between vehicles to avoid collisions</li>
-                        <li>If the system is tampered with, the GSM module sends alerts (with vehicle number) to the nearest police station</li>
-                        <li>Alcohol detection (MQ-3) stops the engine and sends an alert via SMS to police and family if the driver is intoxicated</li>
-                        <li>
-                            <pre>
-    Vehicle ignition is allowed only if:
-        - No alcohol is detected,
-        - Seat belt (or helmet for two-wheelers) is used,
-        - Driver is not drowsy (drowsiness detection mechanism included)
-                            </pre>
-                        </li>
-                    </ul>
-                `
-            }
-        };
-
-        let activeProject = null;
-        let hoverTimeout = null;
-
-        // Show expanded project card
-        function showProjectCard(projectId) {
-            const project = projectData[projectId];
-            if (!project) return;
-            
-            expandedTitle.textContent = project.title;
-            expandedSubtitle.textContent = project.subtitle;
-            expandedContent.innerHTML = project.content;
-            
-            projectOverlay.classList.add('visible');
-            expandedCard.classList.add('visible');
-            activeProject = projectId;
-        }
-
-        // Hide expanded project card
-        function hideProjectCard() {
-            projectOverlay.classList.remove('visible');
-            expandedCard.classList.remove('visible');
-            activeProject = null;
-        }
-
-        // Add event listeners to project cards for hover
-        projectCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                clearTimeout(hoverTimeout);
-                const projectId = card.getAttribute('data-project');
-                hoverTimeout = setTimeout(() => {
-                    showProjectCard(projectId);
-                }, 300);
-            });
-
-            card.addEventListener('mouseleave', () => {
-                clearTimeout(hoverTimeout);
-                hoverTimeout = setTimeout(() => {
-                    if (activeProject) hideProjectCard();
-                }, 300);
-            });
-        });
-
-        // Keep overlay open when mouse is over expanded card
-        expandedCard.addEventListener('mouseenter', () => {
-            clearTimeout(hoverTimeout);
-        });
-
-        expandedCard.addEventListener('mouseleave', () => {
-            hoverTimeout = setTimeout(() => {
-                hideProjectCard();
-            }, 300);
-        });
-
-        // Close button event
-        closeBtn.addEventListener('click', hideProjectCard);
-        projectOverlay.addEventListener('click', hideProjectCard);
-
-        // Add pulse animation to profile image
-        const profileImg = document.querySelector('.profile-img');
-        setInterval(() => {
-            profileImg.style.animation = 'pulse 2s ease-in-out';
-            setTimeout(() => {
-                profileImg.style.animation = '';
-            }, 2000);
-        }, 8000);
-
-        // Add float animation to theme toggle
-        setInterval(() => {
-            themeToggle.style.animation = 'float 3s ease-in-out';
-            setTimeout(() => {
-                themeToggle.style.animation = '';
-            }, 3000);
-        }, 10000);
-
-        // Animate skill tags on hover
-        const skillTags = document.querySelectorAll('.skill-tag');
-        skillTags.forEach(tag => {
-            tag.addEventListener('mouseenter', () => {
-                tag.style.transform = 'translateY(-3px) scale(1.05)';
-            });
-            
-            tag.addEventListener('mouseleave', () => {
-                tag.style.transform = '';
-            });
+        // Animate elements on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // The sidebar has its own animation
+            // The sections will animate as they come into view via the IntersectionObserver
         });
     </script>
 </body>
