@@ -12,46 +12,41 @@
     <!-- progress bar -->
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- canvas background (very subtle) -->
-    <canvas id="bgCanvas" class="bg-canvas"></canvas>
-
-    <!-- theme toggle -->
+    <!-- theme toggle (optional, can be removed if you want only light glass) -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <i class="fas fa-moon"></i>
     </button>
 
-    <!-- fixed sidebar -->
-    <div class="sidebar">
+    <!-- fixed sidebar with glass -->
+    <aside class="sidebar">
         <img src="headshot.jpg" alt="Ganesh Kuntamalla" class="profile-img">
         <h2 class="name">Ganesh Kuntamalla</h2>
         <p class="title">Electrical Engineer</p>
         
         <div class="contact-links">
             <a href="#" class="contact-link">
-                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <i class="fas fa-map-marker-alt contact-icon"></i>
                 <span>Albany, NY</span>
             </a>
             <a href="mailto:gkuntamalla@albany.edu" class="contact-link">
-                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                <i class="fas fa-envelope contact-icon"></i>
                 <span>gkuntamalla@albany.edu</span>
             </a>
             <a href="https://linkedin.com/in/ganesh-kuntamalla352" target="_blank" class="contact-link">
-                <span class="contact-icon"><i class="fab fa-linkedin-in"></i></span>
+                <i class="fab fa-linkedin-in contact-icon"></i>
                 <span>LinkedIn</span>
             </a>
         </div>
-    </div>
+    </aside>
 
-    <!-- scrollable main -->
+    <!-- main content -->
     <main class="main-content">
         <!-- about -->
         <section class="section" id="about">
             <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I am a recent graduate with a Master's in Electrical and Computer Engineering from the University at Albany, SUNY, with a strong passion for solving real-world problems in power systems, renewable energy, and VLSI design. My hands-on experience includes developing a double pulse test system for high-power MEMS relays and optimizing hybrid power systems for off-grid energy access. With a solid background in PCB design, circuit simulation, and embedded development, I am equipped to deliver practical, scalable engineering solutions.</p>
-                    <p>I am actively seeking full-time opportunities in Electrical Engineering, Power Electronics, or ASIC/RTL Design, where I can contribute to impactful engineering projects and work alongside teams driving innovation.</p>
-                </div>
+            <div class="about-text">
+                <p>I am a recent graduate with a Master's in Electrical and Computer Engineering from the University at Albany, SUNY, with a strong passion for solving real-world problems in power systems, renewable energy, and VLSI design. My hands-on experience includes developing a double pulse test system for high-power MEMS relays and optimizing hybrid power systems for off-grid energy access. With a solid background in PCB design, circuit simulation, and embedded development, I am equipped to deliver practical, scalable engineering solutions.</p>
+                <p>I am actively seeking full-time opportunities in Electrical Engineering, Power Electronics, or ASIC/RTL Design, where I can contribute to impactful engineering projects and work alongside teams driving innovation.</p>
             </div>
         </section>
 
@@ -61,7 +56,7 @@
             <div class="education-container">
                 <article class="education-item">
                     <div class="education-header">
-                        <h3 class="education-degree">MS in Electrical and Computer Engineering </h3>
+                        <h3 class="education-degree">MS in Electrical and Computer Engineering</h3>
                         <span class="education-date">Aug 2023 - May 2025</span>
                     </div>
                     <h4 class="education-school">University at Albany, SUNY</h4>
@@ -145,14 +140,15 @@
             </div>
         </section>
 
-        <!-- projects (with toggle) -->
+        <!-- projects (bullet points hidden initially, reveal on scroll) -->
         <section class="section" id="projects">
             <h2 class="section-title">Academic Projects</h2>
             <div class="projects-container">
-                <article class="project-item" data-project>
+                <!-- project 1 -->
+                <article class="project-item" data-reveal-list>
                     <h3 class="project-title">High Current High Voltage Printed Circuit Board Double Pulse Tester</h3>
-                    <div class="project-bullets" data-bullets>
-                        <ul class="exp-points">
+                    <div class="project-bullets">
+                        <ul>
                             <li>Developed a custom PCB-based double pulse tester designed to evaluate high-voltage/high-current MEMS relays.</li>
                             <li>Enabled precision pulse generation up to 750A and 1000V with pulse widths ranging from 100µs to 1ms.</li>
                             <li>Combined benefits of solid-state and electromechanical relays through MEMS technology for fast, isolated switching.</li>
@@ -165,12 +161,12 @@
                             <li>Validated the tester's performance for MEMS relay characterization in high-current, high-voltage environments.</li>
                         </ul>
                     </div>
-                    <button class="project-toggle" data-toggle>Show details</button>
                 </article>
-                <article class="project-item" data-project>
+                <!-- project 2 -->
+                <article class="project-item" data-reveal-list>
                     <h3 class="project-title">Double Pulse Generation Using Arduino for Gate Driver Control</h3>
-                    <div class="project-bullets" data-bullets>
-                        <ul class="exp-points">
+                    <div class="project-bullets">
+                        <ul>
                             <li>Implemented a microcontroller-based solution for generating configurable double pulses using Arduino UNO R3.</li>
                             <li>Utilized built-in GPIO functionality and USB serial communication for seamless data input and control.</li>
                             <li>Designed an Arduino sketch that accepts user-defined pulse widths and blank time via the Serial Monitor.</li>
@@ -183,12 +179,12 @@
                             <li>Enabled rapid prototyping and repeatable testing through USB-powered Arduino setup with minimal hardware.</li>
                         </ul>
                     </div>
-                    <button class="project-toggle" data-toggle>Show details</button>
                 </article>
-                <article class="project-item" data-project>
+                <!-- project 3 -->
+                <article class="project-item" data-reveal-list>
                     <h3 class="project-title">Double Pulse Generation from Function Generator Using Python Script</h3>
-                    <div class="project-bullets" data-bullets>
-                        <ul class="exp-points">
+                    <div class="project-bullets">
+                        <ul>
                             <li>Used Siglent SDG1025 Arbitrary Waveform Generator for precise gate pulse generation.</li>
                             <li>Developed a Python script to automate the creation of custom double-pulse waveforms and export them as .CSV files.</li>
                             <li>Enabled user input for waveform parameters: first pulse width, blank time, second pulse width, total duration, and amplitude.</li>
@@ -199,12 +195,12 @@
                             <li>Enabled repeatable and efficient testing with stored waveform configurations accessible from the generator's ARB memory.</li>
                         </ul>
                     </div>
-                    <button class="project-toggle" data-toggle>Show details</button>
                 </article>
-                <article class="project-item" data-project>
+                <!-- project 4 -->
+                <article class="project-item" data-reveal-list>
                     <h3 class="project-title">1MW, 1500V Solar Array Design and Simulation</h3>
-                    <div class="project-bullets" data-bullets>
-                        <ul class="exp-points">
+                    <div class="project-bullets">
+                        <ul>
                             <li>Designed and simulated a 1 MW photovoltaic (PV) array for Albany, NY, constrained by a 1500V DC voltage limit.</li>
                             <li>Developed a PV panel circuit model in MATLAB/Simulink using the NES144-7-550M solar module datasheet.</li>
                             <li>Performed environmental analysis using regional weather data to simulate temperature-dependent behavior of the solar panels.</li>
@@ -216,12 +212,12 @@
                             <li>Presented design conclusions and MPPT configuration trade-offs for real-world implementation in solar power systems.</li>
                         </ul>
                     </div>
-                    <button class="project-toggle" data-toggle>Show details</button>
                 </article>
-                <article class="project-item" data-project>
+                <!-- project 5 -->
+                <article class="project-item" data-reveal-list>
                     <h3 class="project-title">Design and Layout of a Temperature-Dependent Voltage Reference Using P-Channel JFETs and Diodes</h3>
-                    <div class="project-bullets" data-bullets>
-                        <ul class="exp-points">
+                    <div class="project-bullets">
+                        <ul>
                             <li>Designed an integrated circuit device to generate a temperature-proportional voltage (V<sub>PTAT</sub>) using pn-junction diode behavior.</li>
                             <li>Implemented diodes (D3, D4) using base and emitter regions of an IC NPN process to achieve temperature-dependent forward voltage characteristics.</li>
                             <li>Utilized p-channel JFETs (J1, J2, J4, J5) to maintain consistent bias current ratios across the diodes for output voltage accuracy.</li>
@@ -234,12 +230,12 @@
                             <li>Analyzed advantages of area scaling (e.g., thermal performance, layout efficiency) and considered trade-offs such as increased parasitic capacitance.</li>
                         </ul>
                     </div>
-                    <button class="project-toggle" data-toggle>Show details</button>
                 </article>
-                <article class="project-item" data-project>
+                <!-- project 6 -->
+                <article class="project-item" data-reveal-list>
                     <h3 class="project-title">Design and Implementation of a Pipelined Wallace Tree Multiplier in Verilog</h3>
-                    <div class="project-bullets" data-bullets>
-                        <ul class="exp-points">
+                    <div class="project-bullets">
+                        <ul>
                             <li>Designed and implemented a pipelined Wallace Tree Multiplier using Verilog for high-speed binary multiplication.</li>
                             <li>Used half adders and full adders to construct the partial product reduction stages in the multiplier.</li>
                             <li>Adopted pipelining to reduce the critical path delay and improve performance over traditional Wallace tree designs.</li>
@@ -254,12 +250,12 @@
                             <li>Verified correctness and timing behavior of the pipelined Wallace tree architecture under various inputs.</li>
                         </ul>
                     </div>
-                    <button class="project-toggle" data-toggle>Show details</button>
                 </article>
-                <article class="project-item" data-project>
+                <!-- project 7 -->
+                <article class="project-item" data-reveal-list>
                     <h3 class="project-title">Design and Implementation of a 4×4 Systolic Array for Matrix Multiplication in Verilog</h3>
-                    <div class="project-bullets" data-bullets>
-                        <ul class="exp-points">
+                    <div class="project-bullets">
+                        <ul>
                             <li>Implemented a 4×4 Systolic Array architecture in Verilog for matrix multiplication, inspired by Google's TPU (Toy Version).</li>
                             <li>Designed a Multiply-and-Accumulate (MAC) Unit as the core processing element, handling 8-bit inputs and generating 24-bit partial sums.</li>
                             <li>Verified successful compilation and functional correctness of all modules using Cadence Xcelium.</li>
@@ -271,12 +267,12 @@
                             <li>Performed timing optimization and critical path analysis to improve performance.</li>
                         </ul>
                     </div>
-                    <button class="project-toggle" data-toggle>Show details</button>
                 </article>
-                <article class="project-item" data-project>
+                <!-- project 8 -->
+                <article class="project-item" data-reveal-list>
                     <h3 class="project-title">Design and Simulation of a 4-bit Ripple Carry Adder Using MAGIC and SPICE</h3>
-                    <div class="project-bullets" data-bullets>
-                        <ul class="exp-points">
+                    <div class="project-bullets">
+                        <ul>
                             <li>Designed a 1-bit Full Adder (FA) circuit layout using MAGIC VLSI tool.</li>
                             <li>Ensured layout passed all Design Rule Checks (DRCs).</li>
                             <li>Extracted circuit-level netlist from the FA layout.</li>
@@ -289,12 +285,12 @@
                             <li>Simulated the clocked design using SPICE to determine the maximum operating clock frequency.</li>
                         </ul>
                     </div>
-                    <button class="project-toggle" data-toggle>Show details</button>
                 </article>
-                <article class="project-item" data-project>
+                <!-- project 9 -->
+                <article class="project-item" data-reveal-list>
                     <h3 class="project-title">Hybrid Power Generation System</h3>
-                    <div class="project-bullets" data-bullets>
-                        <ul class="exp-points">
+                    <div class="project-bullets">
+                        <ul>
                             <li>Developed a hybrid power generation system combining a roof turbine ventilator and solar energy</li>
                             <li>Uses a boost converter, battery, inverter, and control electronics to generate and distribute electricity</li>
                             <li>Provides a solution for pollution reduction, energy needs in remote areas, and reduces reliance on non-renewable sources</li>
@@ -310,12 +306,12 @@
                             <li>Supports sustainable energy usage for future generations.</li>
                         </ul>
                     </div>
-                    <button class="project-toggle" data-toggle>Show details</button>
                 </article>
-                <article class="project-item" data-project>
+                <!-- project 10 -->
+                <article class="project-item" data-reveal-list>
                     <h3 class="project-title">Vehicle Control System for Accident Prevention</h3>
-                    <div class="project-bullets" data-bullets>
-                        <ul class="exp-points">
+                    <div class="project-bullets">
+                        <ul>
                             <li>Designed a smart vehicle control system to prevent accidents and enhance road safety</li>
                             <li>Integrated multiple sensors: RF, IR, MQ-3 alcohol sensor, GSM module, and seatbelt/helmet detection</li>
                             <li>RF module detects speed-restricted zones; vehicle automatically slows down using a throttle control mechanism</li>
@@ -325,148 +321,130 @@
                             <li><pre>Vehicle ignition is allowed only if: - No alcohol is detected, - Seat belt (or helmet for two-wheelers) is used, - Driver is not drowsy (drowsiness detection mechanism included)</pre></li>
                         </ul>
                     </div>
-                    <button class="project-toggle" data-toggle>Show details</button>
                 </article>
             </div>
         </section>
 
-        <!-- experience (timeline) -->
+        <!-- experience (bullet points hidden initially, reveal on scroll) -->
         <section class="section" id="experience">
             <h2 class="section-title">Work Experience</h2>
-            <div class="timeline">
-                <article class="exp-item timeline-entry">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="exp-header">
-                            <h3 class="exp-title">Research Volunteer – Power Electronics</h3>
-                            <span class="exp-date">Jul 2025 – Present</span>
-                        </div>
-                        <h4 class="exp-company">Energy Conversion Systems Lab (ECSL), University at Albany</h4>
-                        <p class="exp-location">Albany, New York, United States</p>
-                        <p>As part of my ongoing research at the Energy Conversion Systems Lab (ECSL), I am extending my Master’s project work by developing high-voltage, high-current pulse test platforms for characterizing semiconductor and MEMS-based switching devices in power electronics applications. Key technical contributions and responsibilities include:</p>
-                        <ul class="exp-points">
-                            <li>Designed advanced circuit architectures for generating high-energy pulses to evaluate dynamic switching behavior under real-world stress conditions.</li>
-                            <li>Developed schematics and multilayer PCB layouts for high-voltage test systems, incorporating protection circuitry, snubbers, and isolated gate drivers.</li>
-                            <li>Simulated full test setups in LTspice to validate designs, ensure safe operating margins, and optimize component selection for high-performance operation.</li>
-                            <li>Fabricated and assembled test hardware for experimental validation of switching characteristics across various devices and conditions.</li>
-                            <li>Captured and analyzed high-speed transient switching data to assess the impact of different gate-driving and protection strategies.</li>
-                            <li>Documented experimental procedures, results, and insights for internal lab use and future publication in research papers and technical presentations.</li>
-                        </ul>
+            <div class="exp-container">
+                <!-- experience entries with data-reveal-list attribute -->
+                <article class="exp-item" data-reveal-list>
+                    <div class="exp-header">
+                        <h3 class="exp-title">Research Volunteer – Power Electronics</h3>
+                        <span class="exp-date">Jul 2025 – Present</span>
                     </div>
+                    <h4 class="exp-company">Energy Conversion Systems Lab (ECSL), University at Albany</h4>
+                    <p class="exp-location">Albany, New York, United States</p>
+                    <p>As part of my ongoing research at the Energy Conversion Systems Lab (ECSL), I am extending my Master’s project work by developing high-voltage, high-current pulse test platforms for characterizing semiconductor and MEMS-based switching devices in power electronics applications. Key technical contributions and responsibilities include:</p>
+                    <ul class="exp-points">
+                        <li>Designed advanced circuit architectures for generating high-energy pulses to evaluate dynamic switching behavior under real-world stress conditions.</li>
+                        <li>Developed schematics and multilayer PCB layouts for high-voltage test systems, incorporating protection circuitry, snubbers, and isolated gate drivers.</li>
+                        <li>Simulated full test setups in LTspice to validate designs, ensure safe operating margins, and optimize component selection for high-performance operation.</li>
+                        <li>Fabricated and assembled test hardware for experimental validation of switching characteristics across various devices and conditions.</li>
+                        <li>Captured and analyzed high-speed transient switching data to assess the impact of different gate-driving and protection strategies.</li>
+                        <li>Documented experimental procedures, results, and insights for internal lab use and future publication in research papers and technical presentations.</li>
+                    </ul>
                 </article>
-                <article class="exp-item timeline-entry">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="exp-header">
-                            <h3 class="exp-title">Master’s Student Researcher – Power Electronics</h3>
-                            <span class="exp-date">Jan 2025 - May 2025</span>
-                        </div>
-                        <h4 class="exp-company">Energy Conversion Systems Lab (ECSL), University at Albany</h4>
-                        <p class="exp-location">Albany, New York, United States</p>
-                        <p>As part of my master’s project, I designed and developed a high-voltage double pulse tester to evaluate MEMS relay switching behavior in power electronics applications. Key contributions and technical responsibilities included:</p>
-                        <ul class="exp-points">
-                            <li>Designed and fabricated a PCB-based double pulse tester rated for 700 V and 750 A to analyze high-power switching characteristics of MEMS relays.</li>
-                            <li>Studied double pulse testing methodology and implemented gate driver, snubber, and protection circuits to ensure accurate and safe operation.</li>
-                            <li>Simulated complete circuit architecture in LTspice to validate theoretical design and refine component specifications.</li>
-                            <li>Programmed an Arduino and configured a function generator to generate synchronized double pulse signals for precise switching control.</li>
-                            <li>Tested the fabricated PCB in lab conditions, capturing switching waveforms and verifying system performance under high-voltage/high-current loads.</li>
-                            <li>Documented design, simulation, and test procedures, contributing reusable research infrastructure for future MEMS-based power device evaluation.</li>
-                        </ul>
+                <article class="exp-item" data-reveal-list>
+                    <div class="exp-header">
+                        <h3 class="exp-title">Master’s Student Researcher – Power Electronics</h3>
+                        <span class="exp-date">Jan 2025 - May 2025</span>
                     </div>
+                    <h4 class="exp-company">Energy Conversion Systems Lab (ECSL), University at Albany</h4>
+                    <p class="exp-location">Albany, New York, United States</p>
+                    <p>As part of my master’s project, I designed and developed a high-voltage double pulse tester to evaluate MEMS relay switching behavior in power electronics applications. Key contributions and technical responsibilities included:</p>
+                    <ul class="exp-points">
+                        <li>Designed and fabricated a PCB-based double pulse tester rated for 700 V and 750 A to analyze high-power switching characteristics of MEMS relays.</li>
+                        <li>Studied double pulse testing methodology and implemented gate driver, snubber, and protection circuits to ensure accurate and safe operation.</li>
+                        <li>Simulated complete circuit architecture in LTspice to validate theoretical design and refine component specifications.</li>
+                        <li>Programmed an Arduino and configured a function generator to generate synchronized double pulse signals for precise switching control.</li>
+                        <li>Tested the fabricated PCB in lab conditions, capturing switching waveforms and verifying system performance under high-voltage/high-current loads.</li>
+                        <li>Documented design, simulation, and test procedures, contributing reusable research infrastructure for future MEMS-based power device evaluation.</li>
+                    </ul>
                 </article>
-                <article class="exp-item timeline-entry">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="exp-header">
-                            <h3 class="exp-title">Robotics & Controls Engineering Job Simulation</h3>
-                            <span class="exp-date">February 2026</span>
-                        </div>
-                        <h4 class="exp-company">Johnson & Johnson (Forage Virtual Experience)</h4>
-                        <p class="exp-location">Remote</p>
-                        <p>Completed a hands-on virtual internship focused on improving performance and reliability of a surgical robotic arm system through control system analysis and design optimization. Key technical contributions included:</p>
-                        <ul class="exp-points">
-                            <li>Analyzed motion control behavior of a surgical robotic arm to identify response delay and positioning instability.</li>
-                            <li>Used Python-based diagnostic tools to process system response data and evaluate control loop performance.</li>
-                            <li>Investigated feedback control inefficiencies including overshoot, oscillations, and slow settling time.</li>
-                            <li>Performed root-cause analysis of latency issues related to actuator dynamics and sensor feedback timing.</li>
-                            <li>Optimized controller parameters to improve tracking accuracy and reduce steady-state error.</li>
-                            <li>Evaluated system performance using iterative simulations and comparative response plots.</li>
-                            <li>Proposed mechanical and control design modifications to improve repeatability and precision of motion.</li>
-                            <li>Developed annotated engineering diagrams explaining the relationship between control tuning and mechanical wear.</li>
-                            <li>Validated design improvements by analyzing responsiveness, stability margins, and durability considerations.</li>
-                            <li>Prepared a formal engineering proposal summarizing findings, implementation strategy, and reliability improvements for robotic surgical applications.</li>
-                        </ul>
+                <article class="exp-item" data-reveal-list>
+                    <div class="exp-header">
+                        <h3 class="exp-title">Robotics & Controls Engineering Job Simulation</h3>
+                        <span class="exp-date">February 2026</span>
                     </div>
+                    <h4 class="exp-company">Johnson & Johnson (Forage Virtual Experience)</h4>
+                    <p class="exp-location">Remote</p>
+                    <p>Completed a hands-on virtual internship focused on improving performance and reliability of a surgical robotic arm system through control system analysis and design optimization. Key technical contributions included:</p>
+                    <ul class="exp-points">
+                        <li>Analyzed motion control behavior of a surgical robotic arm to identify response delay and positioning instability.</li>
+                        <li>Used Python-based diagnostic tools to process system response data and evaluate control loop performance.</li>
+                        <li>Investigated feedback control inefficiencies including overshoot, oscillations, and slow settling time.</li>
+                        <li>Performed root-cause analysis of latency issues related to actuator dynamics and sensor feedback timing.</li>
+                        <li>Optimized controller parameters to improve tracking accuracy and reduce steady-state error.</li>
+                        <li>Evaluated system performance using iterative simulations and comparative response plots.</li>
+                        <li>Proposed mechanical and control design modifications to improve repeatability and precision of motion.</li>
+                        <li>Developed annotated engineering diagrams explaining the relationship between control tuning and mechanical wear.</li>
+                        <li>Validated design improvements by analyzing responsiveness, stability margins, and durability considerations.</li>
+                        <li>Prepared a formal engineering proposal summarizing findings, implementation strategy, and reliability improvements for robotic surgical applications.</li>
+                    </ul>
                 </article>
-                <article class="exp-item timeline-entry">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="exp-header">
-                            <h3 class="exp-title">Electrical Engineering Job Simulation</h3>
-                            <span class="exp-date">February 2026</span>
-                        </div>
-                        <h4 class="exp-company">GE Aerospace (Forage Virtual Experience)</h4>
-                        <p class="exp-location">Remote</p>
-                        <p>Completed an aerospace electrical engineering simulation involving aircraft power distribution, avionics troubleshooting, and reliability assessment under extreme environmental conditions. Key technical contributions included:</p>
-                        <ul class="exp-points">
-                            <li>Designed an aircraft electrical distribution architecture considering load prioritization and redundancy requirements.</li>
-                            <li>Selected and sized circuit protection devices including breakers and protective components based on system loads.</li>
-                            <li>Analyzed avionics navigation system failures under adverse environmental conditions such as temperature and vibration.</li>
-                            <li>Performed electrical fault diagnosis using system schematics and simulated operational data.</li>
-                            <li>Evaluated reliability risks related to power interruptions and transient disturbances.</li>
-                            <li>Assessed environmental effects on electrical components including insulation degradation and connector performance.</li>
-                            <li>Applied aerospace engineering standards and safety considerations in electrical system planning.</li>
-                            <li>Developed mitigation strategies to improve system robustness and maintain operational continuity.</li>
-                            <li>Documented troubleshooting procedures and corrective actions in structured engineering reports.</li>
-                            <li>Prepared a comprehensive design and assessment proposal addressing reliability, safety, and maintainability of aircraft electrical systems.</li>
-                        </ul>
+                <article class="exp-item" data-reveal-list>
+                    <div class="exp-header">
+                        <h3 class="exp-title">Electrical Engineering Job Simulation</h3>
+                        <span class="exp-date">February 2026</span>
                     </div>
+                    <h4 class="exp-company">GE Aerospace (Forage Virtual Experience)</h4>
+                    <p class="exp-location">Remote</p>
+                    <p>Completed an aerospace electrical engineering simulation involving aircraft power distribution, avionics troubleshooting, and reliability assessment under extreme environmental conditions. Key technical contributions included:</p>
+                    <ul class="exp-points">
+                        <li>Designed an aircraft electrical distribution architecture considering load prioritization and redundancy requirements.</li>
+                        <li>Selected and sized circuit protection devices including breakers and protective components based on system loads.</li>
+                        <li>Analyzed avionics navigation system failures under adverse environmental conditions such as temperature and vibration.</li>
+                        <li>Performed electrical fault diagnosis using system schematics and simulated operational data.</li>
+                        <li>Evaluated reliability risks related to power interruptions and transient disturbances.</li>
+                        <li>Assessed environmental effects on electrical components including insulation degradation and connector performance.</li>
+                        <li>Applied aerospace engineering standards and safety considerations in electrical system planning.</li>
+                        <li>Developed mitigation strategies to improve system robustness and maintain operational continuity.</li>
+                        <li>Documented troubleshooting procedures and corrective actions in structured engineering reports.</li>
+                        <li>Prepared a comprehensive design and assessment proposal addressing reliability, safety, and maintainability of aircraft electrical systems.</li>
+                    </ul>
                 </article>
-                <article class="exp-item timeline-entry">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="exp-header">
-                            <h3 class="exp-title">Controller Development Intern</h3>
-                            <span class="exp-date">Jan 2023 - Jun 2023</span>
-                        </div>
-                        <h4 class="exp-company">Erkey Motors India Pvt. Ltd</h4>
-                        <p class="exp-location">Hyderabad, Telangana, India</p>
-                        <p>During my training program at Erkey Motors, I gained hands-on experience in electric vehicle systems, simulation, and global EV ecosystem analysis. My key responsibilities and learning experiences included:</p>
-                        <ul class="exp-points">
-                            <li>Completed an in-depth case study of EV startups in Chandigarh, focusing on motor power, motor voltage, battery voltage, and battery capacity (Ah)</li>
-                            <li>Conducted a comparative study of Germany's EV ecosystem, analyzing charging infrastructure and cost factors related to EV adoption</li>
-                            <li>Studied EV architectures including IC, EV, HEV, and PHEV powertrains, with emphasis on controller selection and design strategies</li>
-                            <li>Simulated basic circuits in TINKERCAD to test design concepts and validate control logic before implementation</li>
-                            <li>Developed detailed Simulink models for PMDC, BLDC, and PMSM motors, simulating both controlled and uncontrolled circuits to analyze EV drive dynamics.</li>
-                            <li>Designed and implemented power electronic converters aimed at optimizing energy efficiency and enhancing vehicle control strategies.</li>
-                            <li>Participated actively in hands-on training sessions, doubt-clearing forums, and collaborative assignments to reinforce practical skills.</li>
-                            <li>Contributed to technical documentation, including detailed country-specific EV policy case studies and simulation reports.</li>
-                        </ul>
+                <article class="exp-item" data-reveal-list>
+                    <div class="exp-header">
+                        <h3 class="exp-title">Controller Development Intern</h3>
+                        <span class="exp-date">Jan 2023 - Jun 2023</span>
                     </div>
+                    <h4 class="exp-company">Erkey Motors India Pvt. Ltd</h4>
+                    <p class="exp-location">Hyderabad, Telangana, India</p>
+                    <p>During my training program at Erkey Motors, I gained hands-on experience in electric vehicle systems, simulation, and global EV ecosystem analysis. My key responsibilities and learning experiences included:</p>
+                    <ul class="exp-points">
+                        <li>Completed an in-depth case study of EV startups in Chandigarh, focusing on motor power, motor voltage, battery voltage, and battery capacity (Ah)</li>
+                        <li>Conducted a comparative study of Germany's EV ecosystem, analyzing charging infrastructure and cost factors related to EV adoption</li>
+                        <li>Studied EV architectures including IC, EV, HEV, and PHEV powertrains, with emphasis on controller selection and design strategies</li>
+                        <li>Simulated basic circuits in TINKERCAD to test design concepts and validate control logic before implementation</li>
+                        <li>Developed detailed Simulink models for PMDC, BLDC, and PMSM motors, simulating both controlled and uncontrolled circuits to analyze EV drive dynamics.</li>
+                        <li>Designed and implemented power electronic converters aimed at optimizing energy efficiency and enhancing vehicle control strategies.</li>
+                        <li>Participated actively in hands-on training sessions, doubt-clearing forums, and collaborative assignments to reinforce practical skills.</li>
+                        <li>Contributed to technical documentation, including detailed country-specific EV policy case studies and simulation reports.</li>
+                    </ul>
                 </article>
-                <article class="exp-item timeline-entry">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="exp-header">
-                            <h3 class="exp-title">Substation Operations Intern</h3>
-                            <span class="exp-date">Dec 2019 - Mar 2020</span>
-                        </div>
-                        <h4 class="exp-company">TSTRANSCO, 132/33kV Sub Station</h4>
-                        <p class="exp-location">Hyderabad, Telangana, India</p>
-                        <p>During my internship, I gained hands-on experience with the operation and maintenance of a 132/33kV substation. Key responsibilities and learning outcomes included:</p>
-                        <ul class="exp-points">
-                            <li>Studied the Single-line diagram of the substation to locate and understand the function of all equipment on-site</li>
-                            <li>Performed testing and inspections on instrument transformers, cooling fans, distribution boards, and conducted tan delta testing for equipment diagnostics</li>
-                            <li>Recorded SF6 gas pressure readings hourly in the substation logbook to ensure equipment safety and performance</li>
-                            <li>Utilized SF6 gas detection and thermographic cameras to identify and locate gas leaks; replenished SF6 gas modules when pressure dropped below the specified levels</li>
-                            <li>Measured and maintained earth pit resistance in compliance with safety standards to ensure proper grounding</li>
-                            <li>Monitored transformer silica gel crystals for moisture absorption and replaced them when saturated</li>
-                            <li>Collected transformer oil samples for testing and analyzed reports to assess equipment health</li>
-                            <li>Prepared and submitted monthly reports on gas pressure and load details through the substation maintenance website as instructed by senior engineers</li>
-                            <li>Maintained circuit breakers, including battery replacements for trip circuits, ensuring reliable operation</li>
-                            <li>Collaborated closely with senior engineers to enhance substation control systems, assist in scheduling maintenance activities, and contribute to technical report creation</li>
-                        </ul>
+                <article class="exp-item" data-reveal-list>
+                    <div class="exp-header">
+                        <h3 class="exp-title">Substation Operations Intern</h3>
+                        <span class="exp-date">Dec 2019 - Mar 2020</span>
                     </div>
+                    <h4 class="exp-company">TSTRANSCO, 132/33kV Sub Station</h4>
+                    <p class="exp-location">Hyderabad, Telangana, India</p>
+                    <p>During my internship, I gained hands-on experience with the operation and maintenance of a 132/33kV substation. Key responsibilities and learning outcomes included:</p>
+                    <ul class="exp-points">
+                        <li>Studied the Single-line diagram of the substation to locate and understand the function of all equipment on-site</li>
+                        <li>Performed testing and inspections on instrument transformers, cooling fans, distribution boards, and conducted tan delta testing for equipment diagnostics</li>
+                        <li>Recorded SF6 gas pressure readings hourly in the substation logbook to ensure equipment safety and performance</li>
+                        <li>Utilized SF6 gas detection and thermographic cameras to identify and locate gas leaks; replenished SF6 gas modules when pressure dropped below the specified levels</li>
+                        <li>Measured and maintained earth pit resistance in compliance with safety standards to ensure proper grounding</li>
+                        <li>Monitored transformer silica gel crystals for moisture absorption and replaced them when saturated</li>
+                        <li>Collected transformer oil samples for testing and analyzed reports to assess equipment health</li>
+                        <li>Prepared and submitted monthly reports on gas pressure and load details through the substation maintenance website as instructed by senior engineers</li>
+                        <li>Maintained circuit breakers, including battery replacements for trip circuits, ensuring reliable operation</li>
+                        <li>Collaborated closely with senior engineers to enhance substation control systems, assist in scheduling maintenance activities, and contribute to technical report creation</li>
+                    </ul>
                 </article>
             </div>
         </section>
