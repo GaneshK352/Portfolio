@@ -46,7 +46,6 @@
     // reveal bullet points on scroll (projects & experience)
     const revealItems = document.querySelectorAll('[data-reveal-list]');
     
-    // set initial hidden state (CSS already hides bullets)
     // assign index to each li for staggered animation
     revealItems.forEach(item => {
         const lists = item.querySelectorAll('ul, .exp-points');
@@ -62,8 +61,7 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
-                // optionally unobserve after first reveal
-                revealObserver.unobserve(entry.target);
+                revealObserver.unobserve(entry.target); // only once
             }
         });
     }, { threshold: 0.2 });
