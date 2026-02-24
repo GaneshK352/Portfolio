@@ -12,34 +12,27 @@
     <!-- progress bar -->
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- theme toggle (optional, can be removed if you want only light glass) -->
+    <!-- theme toggle -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <i class="fas fa-moon"></i>
     </button>
 
-    <!-- fixed sidebar with glass -->
-    <aside class="sidebar">
-        <img src="headshot.jpg" alt="Ganesh Kuntamalla" class="profile-img">
-        <h2 class="name">Ganesh Kuntamalla</h2>
-        <p class="title">Electrical Engineer</p>
-        
-        <div class="contact-links">
-            <a href="#" class="contact-link">
-                <i class="fas fa-map-marker-alt contact-icon"></i>
-                <span>Albany, NY</span>
-            </a>
-            <a href="mailto:gkuntamalla@albany.edu" class="contact-link">
-                <i class="fas fa-envelope contact-icon"></i>
-                <span>gkuntamalla@albany.edu</span>
-            </a>
-            <a href="https://linkedin.com/in/ganesh-kuntamalla352" target="_blank" class="contact-link">
-                <i class="fab fa-linkedin-in contact-icon"></i>
-                <span>LinkedIn</span>
-            </a>
+    <!-- header (instead of fixed sidebar) -->
+    <header class="header">
+        <div class="header-content">
+            <img src="headshot.jpg" alt="Ganesh Kuntamalla" class="profile-img">
+            <div class="header-text">
+                <h1 class="name">Ganesh Kuntamalla</h1>
+                <p class="title">Electrical Engineer</p>
+            </div>
+            <div class="header-contact">
+                <a href="#" class="contact-link"><i class="fas fa-map-marker-alt"></i> Albany, NY</a>
+                <a href="mailto:gkuntamalla@albany.edu" class="contact-link"><i class="fas fa-envelope"></i> gkuntamalla@albany.edu</a>
+                <a href="https://linkedin.com/in/ganesh-kuntamalla352" target="_blank" class="contact-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            </div>
         </div>
-    </aside>
+    </header>
 
-    <!-- main content -->
     <main class="main-content">
         <!-- about -->
         <section class="section" id="about">
@@ -140,7 +133,7 @@
             </div>
         </section>
 
-        <!-- projects (bullet points hidden initially, reveal on scroll) -->
+        <!-- projects -->
         <section class="section" id="projects">
             <h2 class="section-title">Academic Projects</h2>
             <div class="projects-container">
@@ -325,11 +318,10 @@
             </div>
         </section>
 
-        <!-- experience (bullet points hidden initially, reveal on scroll) -->
+        <!-- experience -->
         <section class="section" id="experience">
             <h2 class="section-title">Work Experience</h2>
             <div class="exp-container">
-                <!-- experience entries with data-reveal-list attribute -->
                 <article class="exp-item" data-reveal-list>
                     <div class="exp-header">
                         <h3 class="exp-title">Research Volunteer – Power Electronics</h3>
@@ -469,5 +461,9 @@
             </div>
         </section>
     </main>
+
+    <footer class="footer">
+        <p>© 2026 Ganesh Kuntamalla</p>
+    </footer>
 </body>
 </html>
