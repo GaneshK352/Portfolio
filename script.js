@@ -1,83 +1,53 @@
-// script.js
-(function() {
-    // theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-    const icon = themeToggle.querySelector('i');
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-        body.classList.add('dark-mode');
-        icon.classList.replace('fa-moon', 'fa-sun');
-    }
-    
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        if (body.classList.contains('dark-mode')) {
-            icon.classList.replace('fa-moon', 'fa-sun');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            icon.classList.replace('fa-sun', 'fa-moon');
-            localStorage.setItem('theme', 'light');
-        }
-    });
+document.addEventListener('DOMContentLoaded', () => {
+      // 1. Reading Progress Bar
+      window.addEventListener('scroll', () => {
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          document.getElementById('progressBar').style.width = scrolled + '%';
+      });
 
-    // scroll progress
-    const progressBar = document.getElementById('progressBar');
-    window.addEventListener('scroll', () => {
-        const winScroll = document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = (winScroll / height) * 100;
-        progressBar.style.width = scrolled + '%';
-    });
+      // 2. Dark / Light Theme Toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const body = document.body;
 
-    // section fade-in
-    const sections = document.querySelectorAll('.section');
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-    sections.forEach(s => sectionObserver.observe(s));
+      themeToggle.addEventListener('click', () => {
+          body.classList.toggle('light-theme');
+          const isLight = body.classList.contains('light-theme');
+          themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      });
 
-    // reveal bullet points on scroll (projects & experience)
-    const revealItems = document.querySelectorAll('[data-reveal-list]');
-    
-    // assign index to each li for staggered animation
-    revealItems.forEach(item => {
-        const lists = item.querySelectorAll('ul, .exp-points');
-        lists.forEach(list => {
-            const items = list.querySelectorAll('li');
-            items.forEach((li, idx) => {
-                li.style.setProperty('--i', idx);
-            });
-        });
-    });
+      // 3. Project Details Toggle (Expandable Cards)
+      const toggleBtns = document.querySelectorAll('.toggle-details-btn');
+      toggleBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+              const details = btn.nextElementSibling;
+              details.classList.toggle('show');
+              const isShown = details.classList.contains('show');
+              btn.innerHTML = isShown
+                  ? '<i class="fas fa-chevron-up"></i> Hide Details'
+                  : '<i class="fas fa-chevron-down"></i> View Full Details';
+          });
+      });
 
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                revealObserver.unobserve(entry.target); // only once
-            }
-        });
-    }, { threshold: 0.2 });
+      // 4. Interactive Project Filter
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
 
-    revealItems.forEach(item => revealObserver.observe(item));
+      filterBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+              filterBtns.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
 
-    // smooth anchor scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === '#') return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-})();
+              const filter = btn.getAttribute('data-filter');
+              projectCards.forEach(card => {
+                  const category = card.getAttribute('data-category');
+                  if (filter === 'all' || category === filter) {
+                      card.style.display = 'flex';
+                  } else {
+                      card.style.display = 'none';
+                  }
+              });
+          });
+      });
+  });
