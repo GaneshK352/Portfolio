@@ -1,339 +1,83 @@
-/* ==========================================================================
-     Ganesh Kuntamalla Portfolio Design System
-     ========================================================================== */
-
-  :root {
-      --bg-primary: #0a0e17;
-      --bg-secondary: #111827;
-      --bg-card: #1f293d;
-      --text-primary: #f3f4f6;
-      --text-secondary: #9ca3af;
-      --accent-blue: #3b82f6;
-      --accent-cyan: #06b6d4;
-      --accent-green: #10b981;
-      --border-color: #374151;
-      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-      --transition-fast: 0.25s ease;
-  }
-
-  body.light-theme {
-      --bg-primary: #f8fafc;
-      --bg-secondary: #ffffff;
-      --bg-card: #ffffff;
-      --text-primary: #1e293b;
-      --text-secondary: #64748b;
-      --border-color: #e2e8f0;
-      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
-  }
-
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-  }
-
-  body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      transition: background-color 0.3s, color 0.3s;
-  }
-
-  /* Progress Bar */
-  .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
-      width: 0%;
-      z-index: 1000;
-  }
-
-  /* Navigation */
-  .navbar {
-      position: sticky;
-      top: 0;
-      background: rgba(10, 14, 23, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
-      z-index: 900;
-  }
-  .light-theme .navbar {
-      background: rgba(255, 255, 255, 0.85);
-  }
-
-  .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-  }
-
-  .nav-logo {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      text-decoration: none;
-  }
-  .nav-logo span { color: var(--accent-cyan); }
-
-  .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-  }
-  .nav-link {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color var(--transition-fast);
-  }
-  .nav-link:hover { color: var(--accent-cyan); }
-
-  .nav-actions { display: flex; gap: 1rem; align-items: center; }
-  .theme-toggle, .mobile-menu-toggle {
-      background: none;
-      border: 1px solid var(--border-color);
-      color: var(--text-primary);
-      padding: 0.5rem 0.8rem;
-      border-radius: 8px;
-      cursor: pointer;
-  }
-  .mobile-menu-toggle { display: none; }
-
-  /* Hero Section */
-  .hero {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 2rem;
-  }
-  .hero-container {
-      display: flex;
-      gap: 3rem;
-      align-items: center;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 3rem;
-      border-radius: 20px;
-      box-shadow: var(--card-shadow);
-  }
-  .hero-avatar {
-      text-align: center;
-      flex-shrink: 0;
-  }
-  .profile-img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent-cyan);
-  }
-  .status-badge {
-      display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.8rem;
-      color: var(--accent-green);
-      background: rgba(16, 185, 129, 0.1);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-  }
-
-  .hero-name { font-size: 2.5rem; font-weight: 700; }
-  .hero-title { font-size: 1.3rem; color: var(--accent-cyan); margin-bottom: 0.8rem; }
-  .hero-subtitle { color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 650px; }
-
-  .hero-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .hero-tag {
-      background: rgba(59, 130, 246, 0.15);
-      color: var(--accent-blue);
-      padding: 0.3rem 0.7rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 500;
-  }
-
-  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn {
-      padding: 0.75rem 1.4rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform var(--transition-fast);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-  }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-primary { background: var(--accent-blue); color: #fff; }
-  .btn-secondary { background: var(--accent-cyan); color: #000; }
-  .btn-outline { border: 1px solid var(--border-color); color: var(--text-primary); }
-
-  /* Metrics Strip */
-  .metrics-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-  }
-  .metric-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 1.2rem;
-      border-radius: 12px;
-      text-align: center;
-  }
-  .metric-num { display: block; font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan); }
-  .metric-label { font-size: 0.85rem; color: var(--text-secondary); }
-
-  /* Main Content Section */
-  .main-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem 4rem; }
-  .section { margin-top: 4rem; }
-  .section-header { margin-bottom: 2rem; }
-  .section-title { font-size: 1.8rem; font-weight: 700; }
-  .title-underline { width: 50px; height: 4px; background: var(--accent-cyan); margin-top: 0.4rem; border-radius: 2px; }
-
-  /* About */
-  .about-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 2rem;
-      border-radius: 16px;
-  }
-  .about-card p { margin-bottom: 1rem; color: var(--text-secondary); }
-  .about-highlights { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem; }
-  .highlight-item { color: var(--accent-green); font-weight: 500; font-size: 0.95rem; }
-
-  /* Skills Grid */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-  .skill-category-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 1.5rem;
-      border-radius: 16px;
-  }
-  .skill-icon { font-size: 1.8rem; color: var(--accent-cyan); margin-bottom: 0.8rem; }
-  .skill-category-card h3 { margin-bottom: 1rem; font-size: 1.1rem; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .skill-tag {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
-      padding: 0.3rem 0.6rem;
-      border-radius: 6px;
-      font-size: 0.8rem;
-  }
-
-  /* Timeline */
-  .timeline { border-left: 2px solid var(--border-color); margin-left: 1rem; padding-left: 2rem; }
-  .timeline-item { position: relative; margin-bottom: 2.5rem; }
-  .timeline-dot {
-      position: absolute;
-      left: -2.55rem;
-      top: 0.3rem;
-      width: 14px;
-      height: 14px;
-      background: var(--accent-cyan);
-      border-radius: 50%;
-  }
-  .timeline-content {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 1.5rem;
-      border-radius: 12px;
-  }
-  .timeline-date { font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600; }
-  .timeline-role { font-size: 1.2rem; }
-  .timeline-company { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
-  .timeline-bullets { padding-left: 1.2rem; color: var(--text-secondary); font-size: 0.9rem; }
-
-  /* Projects Filter & Grid */
-  .project-filter-bar { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; }
-  .filter-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      color: var(--text-secondary);
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 500;
-  }
-  .filter-btn.active, .filter-btn:hover { background: var(--accent-blue); color: #fff; border-color: var(--accent-blue); }
-
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-  .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 1.8rem;
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-  }
-  .project-badge {
-      align-self: flex-start;
-      font-size: 0.75rem;
-      background: rgba(6, 182, 212, 0.15);
-      color: var(--accent-cyan);
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      margin-bottom: 0.8rem;
-      font-weight: 600;
-  }
-  .project-title { font-size: 1.2rem; margin-bottom: 0.6rem; }
-  .project-summary { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; flex-grow: 1; }
-
-  .project-specs { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
-  .spec-chip {
-      font-size: 0.75rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-  }
-
-  .toggle-details-btn {
-      background: none;
-      border: none;
-      color: var(--accent-cyan);
-      cursor: pointer;
-      text-align: left;
-      font-weight: 500;
-      font-size: 0.85rem;
-  }
-  .project-details { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border-color); }
-  .project-details.show { display: block; }
-  .project-details ul { padding-left: 1.2rem; font-size: 0.85rem; color: var(--text-secondary); }
-
-  /* Education & Certs */
-  .education-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .edu-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; }
-  .edu-year { font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600; }
-  .edu-degree { font-size: 1.1rem; margin-top: 0.3rem; }
-  .edu-school { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem; }
-  .edu-gpa { display: inline-block; background: rgba(16, 185, 129, 0.15); color: var(--accent-green); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
-
-  .sub-section-title { margin: 3rem 0 1.5rem; font-size: 1.3rem; }
-  .certs-grid { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-  .cert-pill { background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.85rem; }
-
-  /* Contact */
-  .contact-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 2.5rem; border-radius: 16px; text-align: center; }
-  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
-  .contact-btn { background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); text-decoration: none; padding: 0.8rem 1.4rem;
-  border-radius: 8px; }
-  .contact-location { padding: 0.8rem 1.4rem; color: var(--text-secondary); }
-
-  /* Footer */
-  .footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.85rem; }
-
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-      .hero-container { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
-      .nav-links { display: none; }
-      .mobile-menu-toggle { display: block; }
-  }
-
-  ---
+       1 :root {
+       2     --primary-color: #2563eb;
+       3     --secondary-color: #64748b;
+       4     --bg-color: #f8fafc;
+       5     --card-bg: #ffffff;
+       6     --text-color: #1e293b;
+       7     --accent-color: #0f172a;
+       8     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+       9 }
+      10
+      11 body {
+      12     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      13     line-height: 1.6;
+      14     color: var(--text-color);
+      15     background-color: var(--bg-color);
+      16     margin: 0;
+      17     padding: 20px;
+      18 }
+      19
+      20 .header {
+      21     background: var(--accent-color);
+      22     color: white;
+      23     padding: 3rem 2rem;
+      24     border-radius: 12px;
+      25     margin-bottom: 2rem;
+      26 }
+      27
+      28 .header-content {
+      29     max-width: 900px;
+      30     margin: 0 auto;
+      31     display: flex;
+      32     justify-content: space-between;
+      33     align-items: center;
+      34 }
+      35
+      36 .profile-section { display: flex; align-items: center; gap: 20px; }
+      37
+      38 .profile-img {
+      39     width: 100px;
+      40     height: 100px;
+      41     border-radius: 50%;
+      42     border: 3px solid white;
+      43 }
+      44
+      45 .name { font-size: 2rem; margin: 0; }
+      46 .title { font-size: 1.1rem; opacity: 0.9; margin: 0; }
+      47
+      48 .header-contact { display: flex; flex-direction: column; gap: 5px; }
+      49 .contact-link { color: white; text-decoration: none; font-size: 0.9rem; }
+      50
+      51 .main-content { max-width: 900px; margin: 0 auto; }
+      52
+      53 .section {
+      54     background: var(--card-bg);
+      55     padding: 2rem;
+      56     border-radius: 12px;
+      57     margin-bottom: 2rem;
+      58     box-shadow: var(--shadow);
+      59 }
+      60
+      61 .section-title {
+      62     color: var(--primary-color);
+      63     border-bottom: 2px solid var(--primary-color);
+      64     padding-bottom: 10px;
+      65     margin-bottom: 1.5rem;
+      66 }
+      67
+      68 .exp-item, .project-item { margin-bottom: 1.5rem; }
+      69 .exp-header, .project-header { display: flex; justify-content: space-between; align-items: baseline; }
+      70 .exp-title, .project-title { margin: 0; }
+      71 .exp-date, .project-tech { font-size: 0.85rem; color: var(--secondary-color); }
+      72 .exp-points { margin: 5px 0 0 20px; padding: 0; }
+      73
+      74 .skills-grid {
+      75     display: grid;
+      76     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      77     gap: 20px;
+      78 }
+      79 .skill-category h3 { margin-bottom: 10px; color: var(--primary-color); }
+      80 .skill-category ul { list-style: none; padding: 0; }
+      81 .skill-category li { margin-bottom: 5px; font-size: 0.95rem; }
+      82
+      83 .footer { text-align: center; color: var(--secondary-color); margin-top: 3rem; }
